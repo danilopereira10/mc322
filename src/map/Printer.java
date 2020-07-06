@@ -29,9 +29,9 @@ public class Printer {
 		printLine("Pontuação total: " + totalScore);
 	}
 	
-	public void printMap(Element[][] matrix) {
-		for (Element[] items : matrix) {
-			for (Element item : items) {
+	public void printMap(GameElement[][] matrix) {
+		for (GameElement[] items : matrix) {
+			for (GameElement item : items) {
 				if (item != null) { 
 					print(item.toString() + " ");
 				} else {
