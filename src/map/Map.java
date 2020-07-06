@@ -1,5 +1,8 @@
 package map;
 
 public class Map {
-	private String[][] matrix;
+	private Element[][] matrix;
+	public Map(Element[][] matrix) {
+		this.matrix = matrix;
+	}
 }
