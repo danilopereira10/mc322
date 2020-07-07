@@ -1,7 +1,9 @@
 package map;
 
+import movable.Movable;
+
 public class Map {
-	private GameElement[][] matrix;
+	private Object[][] matrix;
 	public Map(GameElement[][] matrix) {
 		this.matrix = matrix;
 	}
@@ -10,11 +12,15 @@ public class Map {
 		matrix[position.getY()][position.getX()] = gameElement;
 	}
 	
+	public void moveUp(Movable movable) {
+		this.matrix[movable.getY() - 1][movable.getX()] = movable;
+	}
+	
 	public void printMap() {
-		for (GameElement[] items : matrix) {
-			for (GameElement item : items) {
+		for (Object[] items : matrix) {
+			for (Object item : items) {
 				if (item != null) { 
-					System.out.print(item.print() + " ");
+					System.out.print(((GameElement)item).print() + " ");
 				} else {
 					System.out.print("-- ");
 				}

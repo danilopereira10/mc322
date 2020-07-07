@@ -28,6 +28,7 @@ public class Main {
 			} else if (command.compareTo("d") == 0) {
 			} else if (command.compareTo("g") == 0) {
 			}
+			map.printMap();
 		}
 		keyboard.close();
 	}
