@@ -16,4 +16,9 @@ public class Hero extends GameElement {
 		this.hp = hp;
 		this.intelligencePoints = intelligencePoints;
 	}
+	
+	@Override
+	public String print() {
+		return "HE";
+	}
 }

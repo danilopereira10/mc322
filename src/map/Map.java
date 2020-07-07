@@ -14,7 +14,7 @@ public class Map {
 		for (GameElement[] items : matrix) {
 			for (GameElement item : items) {
 				if (item != null) { 
-					System.out.print(item.toString() + " ");
+					System.out.print(item.print() + " ");
 				} else {
 					System.out.print("-- ");
 				}
