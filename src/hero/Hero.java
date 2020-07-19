@@ -1,10 +1,11 @@
 package hero;
 
+import equipment.Armor;
+import equipment.Weapon;
 import map.GameElement;
 import map.Map;
 import map.Position;
 import movable.Movable;
-import weapon.Weapon;
 
 public class Hero extends GameElement implements Movable {
 	private String name;
@@ -16,6 +17,7 @@ public class Hero extends GameElement implements Movable {
 	private Map map;
 	private Weapon leftWeapon;
 	private Weapon rightWeapon;
+	private Armor armor;
 	
 	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, Position position) {
 		this.name = name;
@@ -26,6 +28,7 @@ public class Hero extends GameElement implements Movable {
 		this.position = position;
 		leftWeapon = Weapon.EMPTY_HAND;
 		rightWeapon = Weapon.EMPTY_HAND;
+		armor = Armor.NO_ARMOR;
 	}
 
 	@Override

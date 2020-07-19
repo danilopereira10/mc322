@@ -1,4 +1,4 @@
-package weapon;
+package equipment;
 
 public enum Weapon {
 	EMPTY_HAND,
