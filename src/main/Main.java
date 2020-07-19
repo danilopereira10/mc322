@@ -12,8 +12,9 @@ public class Main {
 	public static void main(String[] args) {
 		Map map = new Map(new GameElement[10][10]);
 		map.printMap();
-		Hero hero = new Hero("Danilo", 3, 2, 15, 50);
 		Position initialPosition = new Position(0, 0);
+		Hero hero = new Hero("Danilo", 3, 2, 15, 50, initialPosition);
+		
 		map.put(hero, initialPosition);
 		
 		Scanner keyboard = new Scanner(System.in);
