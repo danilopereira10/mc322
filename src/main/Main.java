@@ -12,12 +12,37 @@ public class Main {
 	public static void main(String[] args) {
 		Map map = new Map(new GameElement[10][10]);
 		map.printMap();
+		Scanner keyboard = new Scanner(System.in);
+		
+		System.out.println("Escolha o herói");
+		System.out.println("Digite 1 para Bárbaro");
+		System.out.println("Digite 2 para Anão");
+		System.out.println("Digite 3 para Elfo");
+		System.out.println("Digite 4 para Feiticeiro");
+		String choosenHero = keyboard.nextLine();
+		
+		/*switch (choosenHero) {
+		case "1":
+			hero = Hero.Barbarian;
+			break;
+		case "2":
+			hero = Hero.Dwarf;
+			break;
+		case "3":
+			hero = Hero.Elf;
+			break;
+		case "4":
+			hero = Hero.Sorcerer;
+			break;
+		}*/
+		
+		
 		Position initialPosition = new Position(0, 0);
 		Hero hero = new Hero("Danilo", 3, 2, 15, 50, initialPosition);
 		
 		map.put(hero, initialPosition);
 		
-		Scanner keyboard = new Scanner(System.in);
+		
 		boolean running = true;
 		while (running) {
 			System.out.print("Enter the command : ");
