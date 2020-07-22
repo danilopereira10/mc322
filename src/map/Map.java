@@ -16,6 +16,18 @@ public class Map {
 		this.matrix[movable.getY() - 1][movable.getX()] = movable;
 	}
 	
+	public void moveLeft(Movable movable) {
+		this.matrix[movable.getY()][movable.getX() - 1] = movable;
+	}
+	
+	public void moveRight(Movable movable) {
+		this.matrix[movable.getY()][movable.getX() + 1] = movable;
+	}
+	
+	public void moveDown(Movable movable) {
+		this.matrix[movable.getY() + 1][movable.getX()] = movable;
+	}
+	
 	public void printMap() {
 		for (Object[] items : matrix) {
 			for (Object item : items) {

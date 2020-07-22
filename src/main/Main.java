@@ -56,9 +56,11 @@ public class Main {
 			if (command.compareTo("w") == 0) {
 				hero.moveUp();
 			} else if (command.compareTo("a") == 0) {
-				
+				hero.moveLeft();
 			} else if (command.compareTo("s") == 0) {
+				hero.moveDown();
 			} else if (command.compareTo("d") == 0) {
+				hero.moveRight();
 			} else if (command.compareTo("g") == 0) {
 			}
 			map.printMap();
