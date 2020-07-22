@@ -40,6 +40,7 @@ public class Main {
 			hero = new Sorcerer("Danilo", initialPosition);
 			break;
 		default:
+			hero = null;
 			System.out.println("Hero not choosen. Exiting application");
 			System.exit(1);
 		}
