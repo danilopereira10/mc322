@@ -2,7 +2,11 @@ package main;
 
 import java.util.Scanner;
 
+import hero.Barbarian;
+import hero.Dwarf;
+import hero.Elf;
 import hero.Hero;
+import hero.Sorcerer;
 import map.GameElement;
 import map.Map;
 import map.Position;
@@ -20,28 +24,25 @@ public class Main {
 		System.out.println("Digite 3 para Elfo");
 		System.out.println("Digite 4 para Feiticeiro");
 		String choosenHero = keyboard.nextLine();
-		
+		Hero hero;
+		Position initialPosition = new Position(0, 0);
 		switch (choosenHero) {
 		case "1":
-			hero = Hero.Barbarian;
+			hero = new Barbarian("Danilo", initialPosition);
 			break;
 		case "2":
-			hero = Hero.Dwarf;
+			hero = new Dwarf("Danilo", initialPosition);
 			break;
 		case "3":
-			hero = Hero.Elf;
+			hero = new Elf("Danilo", initialPosition);
 			break;
 		case "4":
-			hero = Hero.Sorcerer;
+			hero = new Sorcerer("Danilo", initialPosition);
 			break;
 		default:
 			System.out.println("Hero not choosen. Exiting application");
 			System.exit(1);
 		}
-		
-		
-		Position initialPosition = new Position(0, 0);
-		Hero hero = new Hero("Danilo", 3, 2, 15, 50, initialPosition);
 		
 		map.put(hero, initialPosition);
 		

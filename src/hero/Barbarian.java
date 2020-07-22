@@ -4,9 +4,8 @@ import map.Position;
 
 public class Barbarian extends Hero {
 
-	public Barbarian(String name, int attackDices, int defenseDices, int hp, int intelligencePoints,
-			Position position) {
-		super(name, attackDices, defenseDices, hp, intelligencePoints, position);
+	public Barbarian(String name, Position position) {
+		super(name, 3, 2, 8, 2, position);
 	}
 
 }
