@@ -14,7 +14,6 @@ public class Hero extends GameElement implements Movable {
 	private int hp;
 	private int intelligencePoints;
 	private Position position;
-	private Map map;
 	private Weapon leftWeapon;
 	private Weapon rightWeapon;
 	private Armor armor;
@@ -32,7 +31,7 @@ public class Hero extends GameElement implements Movable {
 	}
 
 	@Override
-	public void moveUp() {
+	public void moveUp(Map map) {
 		try {
 			map.moveUp(this);
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -42,7 +41,7 @@ public class Hero extends GameElement implements Movable {
 	}
 	
 	@Override
-	public void moveLeft() {
+	public void moveLeft(Map map) {
 		try {
 			map.moveLeft(this);
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -52,7 +51,7 @@ public class Hero extends GameElement implements Movable {
 	}
 	
 	@Override
-	public void moveRight() {
+	public void moveRight(Map map) {
 		try {
 			map.moveRight(this);
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -62,7 +61,7 @@ public class Hero extends GameElement implements Movable {
 	}
 	
 	@Override
-	public void moveDown() {
+	public void moveDown(Map map) {
 		try {
 			map.moveDown(this);
 		} catch (ArrayIndexOutOfBoundsException e) {
