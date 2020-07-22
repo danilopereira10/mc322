@@ -21,7 +21,7 @@ public class Main {
 		System.out.println("Digite 4 para Feiticeiro");
 		String choosenHero = keyboard.nextLine();
 		
-		/*switch (choosenHero) {
+		switch (choosenHero) {
 		case "1":
 			hero = Hero.Barbarian;
 			break;
@@ -34,7 +34,10 @@ public class Main {
 		case "4":
 			hero = Hero.Sorcerer;
 			break;
-		}*/
+		default:
+			System.out.println("Hero not choosen. Exiting application");
+			System.exit(1);
+		}
 		
 		
 		Position initialPosition = new Position(0, 0);
