@@ -54,7 +54,9 @@ public class Main {
 			String command = keyboard.nextLine();
 			
 			if (command.compareTo("w") == 0) {
+				hero.moveUp();
 			} else if (command.compareTo("a") == 0) {
+				
 			} else if (command.compareTo("s") == 0) {
 			} else if (command.compareTo("d") == 0) {
 			} else if (command.compareTo("g") == 0) {

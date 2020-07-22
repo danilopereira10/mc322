@@ -33,8 +33,42 @@ public class Hero extends GameElement implements Movable {
 
 	@Override
 	public void moveUp() {
-		map.moveUp(this);
+		try {
+			map.moveUp(this);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return;
+		}
 		position.setY(position.getY() - 1);
+	}
+	
+	@Override
+	public void moveLeft() {
+		try {
+			map.moveLeft(this);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return;
+		}
+		position.setX(position.getX() - 1);
+	}
+	
+	@Override
+	public void moveRight() {
+		try {
+			map.moveRight(this);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return;
+		}
+		position.setX(position.getX() + 1);
+	}
+	
+	@Override
+	public void moveDown() {
+		try {
+			map.moveDown(this);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return;
+		}
+		position.setY(position.getY() + 1);
 	}
 	
 	@Override
