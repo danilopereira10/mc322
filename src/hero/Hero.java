@@ -13,18 +13,17 @@ public class Hero extends GameElement implements Movable {
 	private int defenseDices;
 	private int hp;
 	private int intelligencePoints;
-	private Position position;
 	private Weapon leftWeapon;
 	private Weapon rightWeapon;
 	private Armor armor;
 	
 	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, Position position) {
+		super(position);
 		this.name = name;
 		this.attackDices = attackDices;
 		this.defenseDices = defenseDices;
 		this.hp = hp;
 		this.intelligencePoints = intelligencePoints;
-		this.position = position;
 		leftWeapon = Weapon.EMPTY_HAND;
 		rightWeapon = Weapon.EMPTY_HAND;
 		armor = Armor.NO_ARMOR;
@@ -70,14 +69,8 @@ public class Hero extends GameElement implements Movable {
 		position.setY(position.getY() + 1);
 	}
 	
-	@Override
-	public int getX() {
-		return position.getX();
-	}
-
-	@Override
-	public int getY() {
-		return position.getY();
+	public void attack(Map map) {
+		map.selectTarget(position);
 	}
 	
 	@Override

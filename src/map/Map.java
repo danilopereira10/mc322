@@ -1,6 +1,7 @@
 package map;
 
 import movable.Movable;
+import printer.Printer;
 
 public class Map {
 	private Object[][] matrix;
@@ -16,40 +17,44 @@ public class Map {
 		int originalX = movable.getX();
 		int originalY = movable.getY();
 		this.matrix[movable.getY() - 1][movable.getX()] = movable;
-		matrix[originalY][originalX] = new EmptySquare();
+		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY));
 	}
 	
 	public void moveLeft(Movable movable) {
 		int originalX = movable.getX();
 		int originalY = movable.getY();
 		this.matrix[movable.getY()][movable.getX() - 1] = movable;
-		matrix[originalY][originalX] = new EmptySquare();
+		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY));
 	}
 	
 	public void moveRight(Movable movable) {
 		int originalX = movable.getX();
 		int originalY = movable.getY();
 		this.matrix[movable.getY()][movable.getX() + 1] = movable;
-		matrix[originalY][originalX] = new EmptySquare();
+		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY));
 	}
 	
 	public void moveDown(Movable movable) {
 		int originalX = movable.getX();
 		int originalY = movable.getY();
 		this.matrix[movable.getY() + 1][movable.getX()] = movable;
-		matrix[originalY][originalX] = new EmptySquare();
+		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY));
+	}
+	
+	public void selectTarget(Position initialPosition) {
+		
 	}
 	
 	public void printMap() {
 		for (Object[] items : matrix) {
 			for (Object item : items) {
 				if (item != null) { 
-					System.out.print(((GameElement)item).print() + " ");
+					Printer.getInstance().print(((GameElement)item).print() + " ");
 				} else {
-					System.out.print("-- ");
+					Printer.getInstance().print("-- ");
 				}
 			}
-			System.out.println();
+			Printer.getInstance().printLine();
 		}
 	}
 }
