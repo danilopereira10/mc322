@@ -1,8 +1,6 @@
 package monster;
 
-import map.GameElement;
-
-public class Skeleton extends GameElement implements Monster {
+public class Skeleton extends Monster {
 	private int hp;
 	
 	public Skeleton() {
