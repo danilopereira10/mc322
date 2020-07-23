@@ -1,5 +1,4 @@
 package monster;
 
-public class Monster {
-
+public interface Monster {
 }

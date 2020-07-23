@@ -10,6 +10,7 @@ import hero.Sorcerer;
 import map.GameElement;
 import map.Map;
 import map.Position;
+import monster.Skeleton;
 
 public class Main {
 
@@ -46,7 +47,9 @@ public class Main {
 		}
 		
 		map.put(hero, initialPosition);
-		
+		Skeleton skeleton = new Skeleton();
+		Position position = new Position(2, 2);
+		map.put(skeleton, position);
 		
 		boolean running = true;
 		while (running) {
