@@ -57,7 +57,7 @@ public class Main {
 		Position position = new Position(2, 2);
 		map.put(skeleton, position);
 		boolean won = false;
-		
+		boolean lost = false;
 		boolean running = true;
 		while (running) {
 			System.out.print("Enter the command : ");
@@ -76,7 +76,8 @@ public class Main {
 			}
 			map.printMap();
 			won = map.allMonstersDestroyed();
-			if (won) {
+			lost = hero.died();
+			if (won || lost) {
 				running = false;
 			}
 		}
