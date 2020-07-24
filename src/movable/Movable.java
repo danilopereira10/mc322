@@ -1,6 +1,5 @@
 package movable;
 
-import map.GameElement;
 import map.Map;
 
 public interface Movable {

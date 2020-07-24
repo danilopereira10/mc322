@@ -13,31 +13,31 @@ public class Map {
 		matrix[position.getY()][position.getX()] = gameElement;
 	}
 	
-	public void moveUp(Movable movable) {
-		int originalX = movable.getX();
-		int originalY = movable.getY();
-		this.matrix[movable.getY() - 1][movable.getX()] = movable;
+	public void moveUp(GameElement gameElement) {
+		int originalX = gameElement.getX();
+		int originalY = gameElement.getY();
+		this.matrix[gameElement.getY() - 1][gameElement.getX()] = gameElement;
 		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY));
 	}
 	
-	public void moveLeft(Movable movable) {
-		int originalX = movable.getX();
-		int originalY = movable.getY();
-		this.matrix[movable.getY()][movable.getX() - 1] = movable;
+	public void moveLeft(GameElement gameElement) {
+		int originalX = gameElement.getX();
+		int originalY = gameElement.getY();
+		this.matrix[gameElement.getY()][gameElement.getX() - 1] = gameElement;
 		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY));
 	}
 	
-	public void moveRight(Movable movable) {
-		int originalX = movable.getX();
-		int originalY = movable.getY();
-		this.matrix[movable.getY()][movable.getX() + 1] = movable;
+	public void moveRight(GameElement gameElement) {
+		int originalX = gameElement.getX();
+		int originalY = gameElement.getY();
+		this.matrix[gameElement.getY()][gameElement.getX() + 1] = gameElement;
 		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY));
 	}
 	
-	public void moveDown(Movable movable) {
-		int originalX = movable.getX();
-		int originalY = movable.getY();
-		this.matrix[movable.getY() + 1][movable.getX()] = movable;
+	public void moveDown(GameElement gameElement) {
+		int originalX = gameElement.getX();
+		int originalY = gameElement.getY();
+		this.matrix[gameElement.getY() + 1][gameElement.getX()] = gameElement;
 		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY));
 	}
 	
