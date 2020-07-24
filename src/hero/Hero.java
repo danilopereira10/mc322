@@ -20,16 +20,18 @@ public abstract class Hero extends GameElement implements Movable {
 	private Armor armor;
 	
 	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, int x, int y,
-			Weapon weapon, int usedHands) {
+			List<Weapon> beginningWeapons) {
 		super(x, y);
 		this.name = name;
 		this.attackDices = attackDices;
 		this.defenseDices = defenseDices;
 		this.hp = hp;
 		this.intelligencePoints = intelligencePoints;
-		weapons = new ArrayList<>();
-		weapons.add(weapon);
-		this.usedHands = usedHands;
+		this.weapons = new ArrayList<>();
+		for (Weapon weapon : beginningWeapons) {
+			weapons.add(weapon);
+			usedHands += weapon.getNeededHands();
+		}
 		armor = Armor.NO_ARMOR;
 	}
 

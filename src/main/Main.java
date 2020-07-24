@@ -1,7 +1,10 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import equipment.Weapon;
 import hero.Barbarian;
 import hero.Dwarf;
 import hero.Elf;
@@ -32,16 +35,16 @@ public class Main {
 		Position initialPosition = new Position(0, 0);
 		switch (choosenHero) {
 		case "1":
-			hero = new Barbarian("Danilo", 0, 0);
+			hero = Barbarian.createBarbarian();
 			break;
 		case "2":
-			hero = new Dwarf("Danilo", 0, 0);
+			hero = Dwarf.createDwarf();
 			break;
 		case "3":
-			hero = new Elf("Danilo", 0, 0);
+			hero = Elf.createElf();
 			break;
 		case "4":
-			hero = new Sorcerer("Danilo", 0, 0);
+			hero = Sorcerer.createSorcerer();
 			break;
 		default:
 			hero = null;
