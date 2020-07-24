@@ -17,8 +17,8 @@ public class Hero extends GameElement implements Movable {
 	private Weapon rightWeapon;
 	private Armor armor;
 	
-	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, Position position) {
-		super(position);
+	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, int x, int y) {
+		super(x, y);
 		this.name = name;
 		this.attackDices = attackDices;
 		this.defenseDices = defenseDices;

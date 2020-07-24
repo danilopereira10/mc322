@@ -3,8 +3,8 @@ package map;
 public class EmptySquare extends GameElement {
 	private Position position;
 	
-	public EmptySquare(Position position) {
-		super(position);
+	public EmptySquare(int x, int y) {
+		super(x, y);
 	}
 	
 	@Override

@@ -1,13 +1,10 @@
 package monster;
 
-import map.Position;
-
 public class Skeleton extends Monster {
 	private int hp;
-	private Position position;
 	
-	public Skeleton(Position position) {
-		super(position);
+	public Skeleton(int x, int y) {
+		super(x, y);
 		hp = 1;
 	}
 	

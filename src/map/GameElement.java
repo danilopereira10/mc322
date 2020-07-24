@@ -5,8 +5,8 @@ import printer.Printable;
 public abstract class GameElement implements Printable {
 	protected Position position;
 	
-	public GameElement(Position position) {
-		this.position = position;
+	public GameElement(int x, int y) {
+		this.position = new Position(x, y);
 	}
 	
 	public  int getX() {

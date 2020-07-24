@@ -50,8 +50,8 @@ public class Main {
 		}
 		
 		map.put(hero, initialPosition);
+		Skeleton skeleton = new Skeleton(2, 2);
 		Position position = new Position(2, 2);
-		Skeleton skeleton = new Skeleton(position);
 		map.put(skeleton, position);
 		
 		boolean running = true;
