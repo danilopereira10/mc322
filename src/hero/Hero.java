@@ -1,10 +1,12 @@
 package hero;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import equipment.Armor;
 import equipment.Weapon;
 import map.GameElement;
 import map.Map;
-import map.Position;
 import movable.Movable;
 
 public abstract class Hero extends GameElement implements Movable {
@@ -13,19 +15,21 @@ public abstract class Hero extends GameElement implements Movable {
 	private int defenseDices;
 	private int hp;
 	private int intelligencePoints;
-	private Weapon leftWeapon;
-	private Weapon rightWeapon;
+	private List<Weapon> weapons;
+	private int usedHands;
 	private Armor armor;
 	
-	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, int x, int y) {
+	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, int x, int y,
+			Weapon weapon, int usedHands) {
 		super(x, y);
 		this.name = name;
 		this.attackDices = attackDices;
 		this.defenseDices = defenseDices;
 		this.hp = hp;
 		this.intelligencePoints = intelligencePoints;
-		leftWeapon = Weapon.EMPTY_HAND;
-		rightWeapon = Weapon.EMPTY_HAND;
+		weapons = new ArrayList<>();
+		weapons.add(weapon);
+		this.usedHands = usedHands;
 		armor = Armor.NO_ARMOR;
 	}
 

@@ -29,7 +29,7 @@ public class Map {
 		matrix[position.getY()][position.getX()] = gameElement;
 	}
 	
-	public void putMonster(Monster monster, Position position) {
+	public void put(Monster monster, Position position) {
 		put((GameElement) monster, position);
 		monsters.add(monster);
 	}
