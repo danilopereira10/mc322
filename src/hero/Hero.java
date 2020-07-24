@@ -16,6 +16,7 @@ public abstract class Hero extends GameElement implements Movable {
 	private int hp;
 	private int intelligencePoints;
 	private List<Weapon> weapons;
+	private Weapon weaponUsingForAttack;
 	private int usedHands;
 	private Armor armor;
 	
@@ -32,6 +33,7 @@ public abstract class Hero extends GameElement implements Movable {
 			weapons.add(weapon);
 			usedHands += weapon.getNeededHands();
 		}
+		weaponUsingForAttack = weapons.get(weapons.size() - 1);
 		armor = Armor.NO_ARMOR;
 	}
 
@@ -75,7 +77,11 @@ public abstract class Hero extends GameElement implements Movable {
 		position.setY(position.getY() + 1);
 	}
 	
+	public int getAttackPoints() {
+		return attackDices + weaponUsingForAttack.getAttackDices();
+	}
+	
 	public void attack(Map map) {
-		map.selectTarget(position);
+		map.selectTarget(this, position);
 	}
 }

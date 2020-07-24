@@ -9,11 +9,11 @@ public abstract class Monster extends GameElement {
 		super(x, y);
 	}
 	
-	public void reduceHp() {
-		hp--;
+	public void reduceHp(int attackPoints) {
+		hp -= attackPoints;
 	}
 	
 	public boolean isDead() {
-		return hp == 0;
+		return hp <= 0;
 	}
 }

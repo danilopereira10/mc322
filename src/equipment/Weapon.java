@@ -6,16 +6,16 @@ public enum Weapon {
 	DAGGER(1, 0);
 	
 	private Weapon(int attackPoints, int neededHands) {
-		this.attackPoints = attackPoints;
+		this.attackDices = attackPoints;
 		this.neededHands = neededHands;
 	}
 	
-	private int attackPoints;
+	private int attackDices;
 	
 	private int neededHands;
 	
-	public int getAp() {
-		return attackPoints;
+	public int getAttackDices() {
+		return attackDices;
 	}
 	
 	public int getNeededHands() {

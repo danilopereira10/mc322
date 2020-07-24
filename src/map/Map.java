@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import hero.Hero;
 import monster.Monster;
 import printer.Printer;
 
@@ -62,13 +63,13 @@ public class Map {
 		matrix[originalY][originalX] = new EmptySquare(originalX, originalY);
 	}
 	
-	public void selectTarget(Position initialPosition) {
+	public void selectTarget(Hero attacker, Position initialPosition) {
 		Position actualPosition = initialPosition;
 		boolean attacked = false;
 		Scanner scanner = new Scanner(System.in);
 		while (!attacked) {
 			printMapInSelectTargetMode(actualPosition);
-			attacked = choosePosition(actualPosition, scanner);
+			attacked = choosePosition(actualPosition, scanner, attacker);
 		}
 		scanner.close();
 	}
@@ -97,7 +98,7 @@ public class Map {
 		}
 	}
 	
-	private boolean choosePosition(Position actualPosition, Scanner scanner) {
+	private boolean choosePosition(Position actualPosition, Scanner scanner, Hero attacker) {
 		System.out.print("Enter the command : ");
 		String command = scanner.nextLine();
 		
@@ -114,7 +115,7 @@ public class Map {
 			int y = actualPosition.getY();
 			if (matrix[y][x] instanceof Monster) {
 				Monster monster = (Monster) matrix[y][x];
-				monster.reduceHp();
+				monster.reduceHp(attacker.getAttackPoints());
 				if (monster.isDead()) {
 					matrix[y][x] = new EmptySquare(x, y);
 					monsters.remove(monster);
