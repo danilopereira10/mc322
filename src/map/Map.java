@@ -1,6 +1,5 @@
 package map;
 
-import movable.Movable;
 import printer.Printer;
 
 public class Map {
@@ -48,11 +47,7 @@ public class Map {
 	public void printMap() {
 		for (Object[] items : matrix) {
 			for (Object item : items) {
-				if (item != null) { 
-					Printer.getInstance().print(((GameElement)item).print() + " ");
-				} else {
-					Printer.getInstance().print("-- ");
-				}
+				Printer.getInstance().print(((GameElement)item).print() + " ");
 			}
 			Printer.getInstance().printLine();
 		}
