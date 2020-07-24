@@ -53,6 +53,7 @@ public class Main {
 		Skeleton skeleton = new Skeleton(2, 2);
 		Position position = new Position(2, 2);
 		map.put(skeleton, position);
+		boolean won = false;
 		
 		boolean running = true;
 		while (running) {
@@ -71,7 +72,12 @@ public class Main {
 				hero.attack(map);
 			}
 			map.printMap();
+			won = map.allMonstersDestroyed();
+			if (won) {
+				running = false;
+			}
 		}
+		
 		keyboard.close();
 	}
 

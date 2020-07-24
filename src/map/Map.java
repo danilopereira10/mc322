@@ -1,5 +1,7 @@
 package map;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import monster.Monster;
@@ -7,8 +9,11 @@ import printer.Printer;
 
 public class Map {
 	private GameElement[][] matrix;
+	List<Monster> monsters;
+	
 	public Map(GameElement[][] matrix) {
 		this.matrix = matrix;
+		monsters = new ArrayList<>();
 		initializeMatrix();
 	}
 	
@@ -22,6 +27,11 @@ public class Map {
 
 	public void put(GameElement gameElement, Position position) {
 		matrix[position.getY()][position.getX()] = gameElement;
+	}
+	
+	public void putMonster(Monster monster, Position position) {
+		put((GameElement) monster, position);
+		monsters.add(monster);
 	}
 	
 	public void moveUp(GameElement gameElement) {
@@ -58,7 +68,7 @@ public class Map {
 		Scanner scanner = new Scanner(System.in);
 		while (!attacked) {
 			printMapInSelectTargetMode(actualPosition);
-			choosePosition(actualPosition, scanner);
+			attacked = choosePosition(actualPosition, scanner);
 		}
 		scanner.close();
 	}
@@ -107,11 +117,16 @@ public class Map {
 				monster.reduceHp();
 				if (monster.isDead()) {
 					matrix[y][x] = new EmptySquare(x, y);
+					monsters.remove(monster);
 				}
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public boolean allMonstersDestroyed() {
+		return monsters.isEmpty();
 	}
 	
 	public void printMapInSelectTargetMode(Position actualPosition) {
