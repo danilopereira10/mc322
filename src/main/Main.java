@@ -32,16 +32,16 @@ public class Main {
 		Position initialPosition = new Position(0, 0);
 		switch (choosenHero) {
 		case "1":
-			hero = new Barbarian("Danilo", initialPosition);
+			hero = new Barbarian("Danilo", 0, 0);
 			break;
 		case "2":
-			hero = new Dwarf("Danilo", initialPosition);
+			hero = new Dwarf("Danilo", 0, 0);
 			break;
 		case "3":
-			hero = new Elf("Danilo", initialPosition);
+			hero = new Elf("Danilo", 0, 0);
 			break;
 		case "4":
-			hero = new Sorcerer("Danilo", initialPosition);
+			hero = new Sorcerer("Danilo", 0, 0);
 			break;
 		default:
 			hero = null;

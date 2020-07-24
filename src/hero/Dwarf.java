@@ -4,8 +4,8 @@ import map.Position;
 
 public class Dwarf extends Hero {
 
-	public Dwarf(String name, Position position) {
-		super(name, 2, 2, 7, 3, position);
+	public Dwarf(String name, int x, int y) {
+		super(name, 2, 2, 7, 3, x, y);
 	}
 
 }
