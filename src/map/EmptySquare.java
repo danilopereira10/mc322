@@ -8,7 +8,7 @@ public class EmptySquare extends GameElement {
 	}
 	
 	@Override
-	public String print() {
-		return "--";
+	public void print() {
+		print("--");
 	}
 }

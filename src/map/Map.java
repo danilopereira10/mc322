@@ -3,7 +3,7 @@ package map;
 import printer.Printer;
 
 public class Map {
-	private Object[][] matrix;
+	private GameElement[][] matrix;
 	public Map(GameElement[][] matrix) {
 		this.matrix = matrix;
 		initializeMatrix();
@@ -50,13 +50,23 @@ public class Map {
 	}
 	
 	public void selectTarget(Position initialPosition) {
-		
+		Position actualPosition = initialPosition;
+		for (int y = 0; y < matrix.length; y++) {
+			for (int x = 0; x < matrix[y].length; x++) {
+				if (actualPosition.getX() == x && actualPosition.getY() == y) {
+					Printer.getInstance().print("   ");
+				} else {
+					matrix[y][x].print();
+				}
+			}
+			Printer.getInstance().printLine();
+		}
 	}
 	
 	public void printMap() {
-		for (Object[] items : matrix) {
-			for (Object item : items) {
-				Printer.getInstance().print(((GameElement)item).print() + " ");
+		for (GameElement[] items : matrix) {
+			for (GameElement item : items) {
+				item.print();
 			}
 			Printer.getInstance().printLine();
 		}

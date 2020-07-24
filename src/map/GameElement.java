@@ -1,6 +1,7 @@
 package map;
 
 import printer.Printable;
+import printer.Printer;
 
 public abstract class GameElement implements Printable {
 	protected Position position;
@@ -14,5 +15,10 @@ public abstract class GameElement implements Printable {
 	}
 	public int getY() {
 		return position.getY();
+	}
+	
+	@Override
+	public void print(String message) {
+		Printer.getInstance().print(message + " ");
 	}
 }

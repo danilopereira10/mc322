@@ -74,7 +74,7 @@ public class Hero extends GameElement implements Movable {
 	}
 	
 	@Override
-	public String print() {
-		return "HE";
+	public void print() {
+		print("HE");
 	}
 }

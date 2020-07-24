@@ -1,5 +1,6 @@
 package printer;
 
 public interface Printable {
-	public abstract String print();
+	public abstract void print(String message);
+	public abstract void print();
 }

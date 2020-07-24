@@ -9,7 +9,7 @@ public class Skeleton extends Monster {
 	}
 	
 	@Override
-	public String print() {
-		return "SK";
+	public void print() {
+		print("SK");
 	}
 }
