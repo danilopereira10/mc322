@@ -6,4 +6,8 @@ public class Dwarf extends Hero {
 		super(name, 2, 2, 7, 3, x, y);
 	}
 
+	@Override
+	public void print() {
+		print("DW");
+	}
 }

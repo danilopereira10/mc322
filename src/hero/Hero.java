@@ -7,7 +7,7 @@ import map.Map;
 import map.Position;
 import movable.Movable;
 
-public class Hero extends GameElement implements Movable {
+public abstract class Hero extends GameElement implements Movable {
 	private String name;
 	private int attackDices;
 	private int defenseDices;
@@ -71,10 +71,5 @@ public class Hero extends GameElement implements Movable {
 	
 	public void attack(Map map) {
 		map.selectTarget(position);
-	}
-	
-	@Override
-	public void print() {
-		print("HE");
 	}
 }

@@ -8,4 +8,8 @@ public class Elf extends Hero {
 		super(name, 2, 2, 6, 4, x, y);
 	}
 
+	@Override
+	public void print() {
+		print("EF");
+	}
 }

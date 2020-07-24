@@ -8,4 +8,8 @@ public class Sorcerer extends Hero {
 		super(name, 1, 2, 4, 6, x, y);
 	}
 
+	@Override
+	public void print() {
+		print("SO");
+	}
 }
