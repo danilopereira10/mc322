@@ -1,25 +1,14 @@
 package map;
 
-public class EmptySquare implements GameElement {
+public class EmptySquare extends GameElement {
 	private Position position;
 	
 	public EmptySquare(Position position) {
-		this.position = position;
+		super(position);
 	}
 	
 	@Override
 	public String print() {
 		return "--";
 	}
-
-	@Override
-	public int getX() {
-		return position.getX();
-	}
-
-	@Override
-	public int getY() {
-		return position.getY();
-	}
-
 }

@@ -1,7 +1,11 @@
 package monster;
 
 import map.GameElement;
+import map.Position;
 
-public abstract class Monster implements GameElement {
-	public abstract String print();
+public abstract class Monster extends GameElement {
+
+	public Monster(Position position) {
+		super(position);
+	}
 }
