@@ -67,7 +67,7 @@ public class Main {
 				hero.moveDown(map);
 			} else if (command.compareTo("d") == 0) {
 				hero.moveRight(map);
-			} else if (command.compareTo("a") == 0) {
+			} else if (command.compareTo("f") == 0) {
 				hero.attack(map);
 			}
 			map.printMap();
