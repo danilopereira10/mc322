@@ -91,4 +91,8 @@ public abstract class Hero extends GameElement implements Movable {
 	public boolean died() {
 		return hp <= 0;
 	}
+	
+	public void heal() {
+		hp += 1;
+	}
 }

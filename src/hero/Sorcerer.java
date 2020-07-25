@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import equipment.Weapon;
-import map.Position;
 import spell.Spell;
 
 public class Sorcerer extends Hero {

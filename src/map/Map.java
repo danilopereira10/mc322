@@ -155,6 +155,36 @@ public class Map {
 		}
 	}
 	
+	public void choosePositionForHealing(Position actualPosition) {
+		Printer.getInstance().print("Choose position for healing: ");
+		Scanner scanner = KeyboardReader.getScanner();
+		String command = scanner.nextLine().toLowerCase();
+		boolean choosingPosition = true;
+		while (choosingPosition) {
+			if (command.compareTo("w") == 0) {
+				moveCursorUp(actualPosition);
+			} else if (command.compareTo("a") == 0) {
+				moveCursorLeft(actualPosition);
+			} else if (command.compareTo("s") == 0) {
+				moveCursorDown(actualPosition);
+			} else if (command.compareTo("d") == 0) {
+				moveCursorRight(actualPosition);
+			} else if (command.compareTo("h") == 0) {
+				int x = actualPosition.getX();
+				int y = actualPosition.getY();
+				if (matrix[y][x] instanceof Hero) {
+					Hero hero = (Hero) matrix[y][x];
+					hero.heal();
+					choosingPosition = false;
+				}
+			} else if (command.compareTo("c") == 0) {
+				choosingPosition = false;
+			}
+		}
+	}
+	
+	
+	
 	public boolean allMonstersDestroyed() {
 		return monsters.isEmpty();
 	}

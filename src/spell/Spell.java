@@ -8,8 +8,9 @@ public enum Spell {
 	TELEPORT {
 		@Override
 		public void doAction(Hero hero, Map map) {
-			Position initialPosition = new Position(hero.getX(), hero.getY());
-			map.choosePositionForTeleport(initialPosition);
+			Position actualPosition = new Position(hero.getX(), hero.getY());
+			map.choosePositionForTeleport(actualPosition);
+			map.printMapInSelectTargetMode(actualPosition);
 		}
 	},
 	FIRE_BALL {
