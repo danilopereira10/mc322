@@ -1,5 +1,5 @@
 package spell;
 
-public class MagicMissile extends Spell {
+public abstract class MagicMissile extends Spell {
 
 }

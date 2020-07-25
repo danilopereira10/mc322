@@ -1,5 +1,5 @@
 package spell;
 
-public class FireBall extends Spell {
+public abstract class FireBall extends Spell {
 
 }

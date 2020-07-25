@@ -1,5 +1,5 @@
 package spell;
 
-public class SimpleHeal extends Spell {
+public abstract class SimpleHeal extends Spell {
 
 }
