@@ -8,10 +8,10 @@ import equipment.Weapon;
 import map.ActionType;
 import map.GameElement;
 import map.Map;
-import movable.Movable;
+import movable.MovableGameElement;
 import spell.Spell;
 
-public abstract class Hero extends GameElement implements Movable {
+public abstract class Hero extends MovableGameElement {
 	private String name;
 	private int attackDices;
 	private int defenseDices;
@@ -39,46 +39,6 @@ public abstract class Hero extends GameElement implements Movable {
 		weaponUsingForAttack = weapons.get(weapons.size() - 1);
 		armor = Armor.NO_ARMOR;
 		this.spells = spells;
-	}
-
-	@Override
-	public void moveUp(Map map) {
-		try {
-			map.moveUp(this);
-		} catch (ArrayIndexOutOfBoundsException e) {
-			return;
-		}
-		position.setY(position.getY() - 1);
-	}
-	
-	@Override
-	public void moveLeft(Map map) {
-		try {
-			map.moveLeft(this);
-		} catch (ArrayIndexOutOfBoundsException e) {
-			return;
-		}
-		position.setX(position.getX() - 1);
-	}
-	
-	@Override
-	public void moveRight(Map map) {
-		try {
-			map.moveRight(this);
-		} catch (ArrayIndexOutOfBoundsException e) {
-			return;
-		}
-		position.setX(position.getX() + 1);
-	}
-	
-	@Override
-	public void moveDown(Map map) {
-		try {
-			map.moveDown(this);
-		} catch (ArrayIndexOutOfBoundsException e) {
-			return;
-		}
-		position.setY(position.getY() + 1);
 	}
 	
 	public int getAttackPoints() {

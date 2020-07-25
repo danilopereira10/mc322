@@ -74,6 +74,8 @@ public class Main {
 				hero.moveRight(map);
 			} else if (command.compareTo("f") == 0) {
 				hero.attack(map);
+			} else if (command.compareTo("g") == 0) {
+				hero.useSpell(map);
 			}
 			map.printMap();
 			won = map.allMonstersDestroyed();
