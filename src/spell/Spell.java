@@ -1,6 +1,7 @@
 package spell;
 
 import hero.Hero;
+import map.ActionType;
 import map.Map;
 import map.Position;
 
@@ -9,8 +10,7 @@ public enum Spell {
 		@Override
 		public void doAction(Hero hero, Map map) {
 			Position actualPosition = new Position(hero.getX(), hero.getY());
-			map.choosePositionForTeleport(actualPosition);
-			map.printMapInSelectTargetMode(actualPosition);
+			map.selectTarget(hero, actualPosition, ActionType.TELEPORT);
 		}
 	},
 	FIRE_BALL {
@@ -31,8 +31,7 @@ public enum Spell {
 		@Override
 		public void doAction(Hero hero, Map map) {
 			Position actualPosition = new Position(hero.getX(), hero.getY());
-			map.choosePositionForHealing(actualPosition);
-			map.printMapInSelectTargetMode(actualPosition);
+			map.selectTarget(hero, actualPosition, ActionType.SIMPLE_HEAL);
 		}
 	};
 	

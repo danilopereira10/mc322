@@ -5,6 +5,7 @@ import java.util.List;
 
 import equipment.Armor;
 import equipment.Weapon;
+import map.ActionType;
 import map.GameElement;
 import map.Map;
 import movable.Movable;
@@ -85,7 +86,7 @@ public abstract class Hero extends GameElement implements Movable {
 	}
 	
 	public void attack(Map map) {
-		map.selectTarget(this, position);
+		map.selectTarget(this, position, ActionType.ATTACK);
 	}
 	
 	public boolean died() {

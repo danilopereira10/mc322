@@ -64,13 +64,12 @@ public class Map {
 		matrix[originalY][originalX] = new EmptySquare(originalX, originalY);
 	}
 	
-	public void selectTarget(Hero attacker, Position initialPosition) {
+	public void selectTarget(Hero hero, Position initialPosition, ActionType actionType) {
 		Position actualPosition = initialPosition;
-		boolean attacked = false;
-		Scanner scanner = KeyboardReader.getScanner();
-		while (!attacked) {
+		boolean choosingPosition = true;
+		while (choosingPosition) {
 			printMapInSelectTargetMode(actualPosition);
-			attacked = choosePosition(actualPosition, scanner, attacker);
+			choosingPosition = stillChoosingPosition(actualPosition, hero, actionType);
 		}
 	}
 	
@@ -98,7 +97,8 @@ public class Map {
 		}
 	}
 	
-	private boolean choosePosition(Position actualPosition, Scanner scanner, Hero attacker) {
+	private boolean stillChoosingPosition(Position actualPosition, Hero hero, ActionType actionType) {
+		Scanner scanner = KeyboardReader.getScanner();
 		Printer.getInstance().print("Enter the command : ");
 		String command = scanner.nextLine().toLowerCase();
 		
@@ -111,19 +111,33 @@ public class Map {
 		} else if (command.compareTo("d") == 0) {
 			moveCursorRight(actualPosition);
 		} else if (command.compareTo("f") == 0) {
+			boolean executed = executeAction(actionType, actualPosition, hero);
+			return !executed;
+		} else if (command.compareTo("c") == 0) {
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean executeAction(ActionType actionType, Position actualPosition, Hero hero) {
+		switch (actionType) {
+		case ATTACK:
 			int x = actualPosition.getX();
 			int y = actualPosition.getY();
 			if (matrix[y][x] instanceof Monster) {
 				Monster monster = (Monster) matrix[y][x];
-				monster.reduceHp(attacker.getAttackPoints());
+				monster.reduceHp(hero.getAttackPoints());
 				if (monster.isDead()) {
 					matrix[y][x] = new EmptySquare(x, y);
 					monsters.remove(monster);
 				}
+				return true;
 			}
-			return true;
+			return false;
+			
+		default:
+			return false;
 		}
-		return false;
 	}
 	
 	public void choosePositionForTeleport(Position actualPosition) {
@@ -141,7 +155,7 @@ public class Map {
 				moveCursorDown(actualPosition);
 			} else if (command.compareTo("d") == 0) {
 				moveCursorRight(actualPosition);
-			} else if (command.compareTo("t") == 0) {
+			} else if (command.compareTo("f") == 0) {
 				int x = actualPosition.getX();
 				int y = actualPosition.getY();
 				if (matrix[y][x] instanceof EmptySquare) {
@@ -169,7 +183,7 @@ public class Map {
 				moveCursorDown(actualPosition);
 			} else if (command.compareTo("d") == 0) {
 				moveCursorRight(actualPosition);
-			} else if (command.compareTo("h") == 0) {
+			} else if (command.compareTo("f") == 0) {
 				int x = actualPosition.getX();
 				int y = actualPosition.getY();
 				if (matrix[y][x] instanceof Hero) {
