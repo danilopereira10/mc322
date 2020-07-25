@@ -1,4 +1,6 @@
-package map;
+package game_element;
+
+import map.Position;
 
 public class EmptySquare extends GameElement {
 	private Position position;

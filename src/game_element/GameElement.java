@@ -1,13 +1,18 @@
-package map;
+package game_element;
 
+import map.Map;
+import map.Position;
 import printer.Printable;
 import printer.Printer;
 
 public abstract class GameElement implements Printable {
 	protected Position position;
+	protected Map map;
 	
-	public GameElement(int x, int y) {
+	public GameElement(int x, int y, Map map) {
 		this.position = new Position(x, y);
+		this.map = map;
+		map.put(this, position);
 	}
 	
 	public  int getX() {
@@ -15,6 +20,10 @@ public abstract class GameElement implements Printable {
 	}
 	public int getY() {
 		return position.getY();
+	}
+	
+	public Map getMap() {
+		return map;
 	}
 	
 	@Override

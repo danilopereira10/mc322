@@ -1,14 +1,13 @@
-package movable;
+package game_element;
 
-import map.GameElement;
 import map.Map;
 
 public abstract class MovableGameElement extends GameElement {
-	public MovableGameElement(int x, int y) {
-		super(x, y);
+	public MovableGameElement(int x, int y, Map map) {
+		super(x, y, map);
 	}
 
-	public void moveUp(Map map) {
+	public void moveUp() {
 		try {
 			map.moveUp(this);
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -17,7 +16,7 @@ public abstract class MovableGameElement extends GameElement {
 		position.setY(position.getY() - 1);
 	}
 	
-	public void moveLeft(Map map) {
+	public void moveLeft() {
 		try {
 			map.moveLeft(this);
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -26,7 +25,7 @@ public abstract class MovableGameElement extends GameElement {
 		position.setX(position.getX() - 1);
 	}
 	
-	public void moveRight(Map map) {
+	public void moveRight() {
 		try {
 			map.moveRight(this);
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -35,7 +34,7 @@ public abstract class MovableGameElement extends GameElement {
 		position.setX(position.getX() + 1);
 	}
 	
-	public void moveDown(Map map) {
+	public void moveDown() {
 		try {
 			map.moveDown(this);
 		} catch (ArrayIndexOutOfBoundsException e) {

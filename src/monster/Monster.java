@@ -1,12 +1,13 @@
 package monster;
 
-import map.GameElement;
+import game_element.GameElement;
+import map.Map;
 
 public abstract class Monster extends GameElement {
 	protected int hp;
 	
-	public Monster(int x, int y) {
-		super(x, y);
+	public Monster(int x, int y, Map map) {
+		super(x, y, map);
 	}
 	
 	public void reduceHp(int attackPoints) {

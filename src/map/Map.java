@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import game_element.EmptySquare;
+import game_element.GameElement;
 import hero.Hero;
 import monster.Monster;
 import printer.Printer;
@@ -29,11 +31,9 @@ public class Map {
 
 	public void put(GameElement gameElement, Position position) {
 		matrix[position.getY()][position.getX()] = gameElement;
-	}
-	
-	public void put(Monster monster, Position position) {
-		put((GameElement) monster, position);
-		monsters.add(monster);
+		if (gameElement instanceof Monster) {
+			monsters.add((Monster) gameElement);
+		}
 	}
 	
 	public void moveUp(GameElement gameElement) {

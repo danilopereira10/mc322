@@ -1,16 +1,13 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import equipment.Weapon;
+import game_element.GameElement;
 import hero.Barbarian;
 import hero.Dwarf;
 import hero.Elf;
 import hero.Hero;
 import hero.Sorcerer;
-import map.GameElement;
 import map.Map;
 import map.Position;
 import monster.Skeleton;
@@ -36,16 +33,16 @@ public class Main {
 		Position initialPosition = new Position(0, 0);
 		switch (choosenHero) {
 		case "1":
-			hero = Barbarian.createBarbarian();
+			hero = Barbarian.createBarbarian(map);
 			break;
 		case "2":
-			hero = Dwarf.createDwarf();
+			hero = Dwarf.createDwarf(map);
 			break;
 		case "3":
-			hero = Elf.createElf();
+			hero = Elf.createElf(map);
 			break;
 		case "4":
-			hero = Sorcerer.createSorcerer();
+			hero = Sorcerer.createSorcerer(map);
 			break;
 		default:
 			hero = null;
@@ -53,10 +50,8 @@ public class Main {
 			System.exit(1);
 		}
 		
-		map.put(hero, initialPosition);
-		Skeleton skeleton = new Skeleton(2, 2);
-		Position position = new Position(2, 2);
-		map.put(skeleton, position);
+		new Skeleton(2, 2, map);
+
 		boolean won = false;
 		boolean lost = false;
 		boolean running = true;
@@ -65,17 +60,17 @@ public class Main {
 			String command = keyboard.nextLine();
 			
 			if (command.compareTo("w") == 0) {
-				hero.moveUp(map);
+				hero.moveUp();
 			} else if (command.compareTo("a") == 0) {
-				hero.moveLeft(map);
+				hero.moveLeft();
 			} else if (command.compareTo("s") == 0) {
-				hero.moveDown(map);
+				hero.moveDown();
 			} else if (command.compareTo("d") == 0) {
-				hero.moveRight(map);
+				hero.moveRight();
 			} else if (command.compareTo("f") == 0) {
-				hero.attack(map);
+				hero.attack();
 			} else if (command.compareTo("g") == 0) {
-				hero.useSpell(map);
+				hero.useSpell();
 			}
 			map.printMap();
 			won = map.allMonstersDestroyed();

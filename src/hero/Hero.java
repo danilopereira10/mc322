@@ -5,10 +5,10 @@ import java.util.List;
 
 import equipment.Armor;
 import equipment.Weapon;
+import game_element.GameElement;
+import game_element.MovableGameElement;
 import map.ActionType;
-import map.GameElement;
 import map.Map;
-import movable.MovableGameElement;
 import spell.Spell;
 
 public abstract class Hero extends MovableGameElement {
@@ -23,9 +23,9 @@ public abstract class Hero extends MovableGameElement {
 	private Armor armor;
 	private List<Spell> spells;
 	
-	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, int x, int y,
+	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, int x, int y, Map map,
 			List<Weapon> beginningWeapons, List<Spell> spells) {
-		super(x, y);
+		super(x, y, map);
 		this.name = name;
 		this.attackDices = attackDices;
 		this.defenseDices = defenseDices;
@@ -45,7 +45,7 @@ public abstract class Hero extends MovableGameElement {
 		return attackDices + weaponUsingForAttack.getAttackDices();
 	}
 	
-	public void attack(Map map) {
+	public void attack() {
 		map.selectTarget(this, position, ActionType.NORMAL_ATTACK);
 	}
 	
