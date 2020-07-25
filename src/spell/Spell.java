@@ -1,5 +1,5 @@
 package spell;
 
-public class Spell {
-	
+public abstract class Spell {
+	public abstract void doAction();
 }
