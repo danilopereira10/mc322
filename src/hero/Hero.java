@@ -2,13 +2,15 @@ package hero;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import character.Character;
 import equipment.Armor;
 import equipment.Weapon;
 import map.ActionType;
 import map.Map;
-import map.MapElement;
+import printer.Printer;
+import scanner.KeyboardReader;
 import spell.Spell;
 
 public abstract class Hero extends Character {
@@ -55,5 +57,31 @@ public abstract class Hero extends Character {
 	
 	public void heal() {
 		hp += 1;
+	}
+	
+	public void useSpell() {
+		if (spells.isEmpty()) {
+			Printer.getInstance().printLine("No spells to use!");
+		} else {
+			chooseSpell();
+		}
+	}
+	
+	private void chooseSpell() {
+		Printer.getInstance().printLine("Choose spell: ");
+		int i = 0;
+		for (Spell spell : spells) {
+			Printer.getInstance().printLine("Type: " + i + "- for: " + spell.toString());
+		}
+		String choosenSpell = KeyboardReader.getInstance().readLineInLowerCase();
+		Integer choosenSpellNumber;
+		try {
+			choosenSpellNumber = Integer.valueOf(choosenSpell);
+		} catch (NumberFormatException e) {
+			Printer.getInstance().printLine("No spell chosen!");
+			return;
+		}
+		Spell spell = spells.get(choosenSpellNumber);
+		spell.doAction(this, map);
 	}
 }

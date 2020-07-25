@@ -18,7 +18,6 @@ public class Main {
 	public static void main(String[] args) {
 		Map map = new Map(new MapElement[10][10]);
 		map.printMap();
-		Scanner keyboard = KeyboardReader.getScanner();
 		Printer printer = Printer.getInstance();
 		
 		
@@ -27,7 +26,7 @@ public class Main {
 		printer.printLine("Digite 2 para Anão");
 		printer.printLine("Digite 3 para Elfo");
 		printer.printLine("Digite 4 para Feiticeiro");
-		String choosenHero = keyboard.nextLine();
+		String choosenHero = KeyboardReader.readLineInLowerCase();
 		Hero hero;
 		
 		switch (choosenHero) {
@@ -56,7 +55,7 @@ public class Main {
 		boolean running = true;
 		while (running) {
 			Printer.getInstance().print("Enter the command : ");
-			String command = keyboard.nextLine();
+			String command = KeyboardReader.getInstance().readLineInLowerCase();
 			
 			if (command.compareTo("w") == 0) {
 				hero.moveUp();
@@ -79,7 +78,6 @@ public class Main {
 			}
 		}
 		
-		keyboard.close();
 	}
 
 }

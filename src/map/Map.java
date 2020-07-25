@@ -96,9 +96,8 @@ public class Map {
 	}
 	
 	private boolean stillChoosingPosition(Position actualPosition, Hero hero, ActionType actionType) {
-		Scanner scanner = KeyboardReader.getScanner();
 		Printer.getInstance().print("Enter the command : ");
-		String command = scanner.nextLine().toLowerCase();
+		String command = KeyboardReader.getInstance().readLineInLowerCase();
 		
 		if (command.compareTo("w") == 0) {
 			moveCursorUp(actualPosition);

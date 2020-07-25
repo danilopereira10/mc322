@@ -3,16 +3,28 @@ package scanner;
 import java.util.Scanner;
 
 public class KeyboardReader {
-	static Scanner scanner;
+	private static KeyboardReader instance;
+	private static Scanner scanner;
 	
 	private void KeyboardReader() {
 		//hiding constructor
 	}
 	
-	public static Scanner getScanner() {
+	public static KeyboardReader getInstance() {
+		if (instance == null) {
+			instance = new KeyboardReader();
+		}
+		return instance;
+	}
+	
+	private static Scanner getScanner() {
 		if (scanner == null) {
 			scanner = new Scanner(System.in);
 		}
 		return scanner;
+	}
+	
+	public String readLineInLowerCase() {
+		return getScanner().nextLine().toLowerCase();
 	}
 }
