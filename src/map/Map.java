@@ -120,8 +120,8 @@ public class Map {
 					matrix[y][x] = new EmptySquare(x, y);
 					monsters.remove(monster);
 				}
-				return true;
 			}
+			return true;
 		}
 		return false;
 	}
