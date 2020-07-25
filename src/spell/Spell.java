@@ -30,8 +30,9 @@ public enum Spell {
 	SIMPLE_HEAL { 
 		@Override
 		public void doAction(Hero hero, Map map) {
-			// TODO Auto-generated method stub
-			
+			Position actualPosition = new Position(hero.getX(), hero.getY());
+			map.choosePositionForHealing(actualPosition);
+			map.printMapInSelectTargetMode(actualPosition);
 		}
 	};
 	
