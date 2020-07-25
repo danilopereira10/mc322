@@ -24,7 +24,7 @@ public class Map {
 	private void initializeMatrix() {
 		for (int y = 0; y < matrix.length; y++) {
 			for (int x = 0; x < matrix[y].length; x++) {
-				matrix[y][x] = new EmptySquare(x, y);
+				matrix[y][x] = new EmptySquare(x, y, this);
 			}
 		}
 	}
@@ -40,28 +40,28 @@ public class Map {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY() - 1][gameElement.getX()] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(originalX, originalY);
+		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
 	public void moveLeft(GameElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY()][gameElement.getX() - 1] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(originalX, originalY);
+		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
 	public void moveRight(GameElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY()][gameElement.getX() + 1] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(originalX, originalY);
+		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
 	public void moveDown(GameElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY() + 1][gameElement.getX()] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(originalX, originalY);
+		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
 	public void selectTarget(Hero hero, Position initialPosition, ActionType actionType) {
@@ -128,7 +128,7 @@ public class Map {
 		case TELEPORT:
 			if (matrix[y][x] instanceof EmptySquare) {
 				matrix[y][x] = matrix[x][y];
-				matrix[x][y] = new EmptySquare(x, y);
+				matrix[x][y] = new EmptySquare(x, y, this);
 				return true;
 			}
 			return false;
@@ -152,7 +152,7 @@ public class Map {
 			Monster monster = (Monster) matrix[y][x];
 			monster.reduceHp(damage);
 			if (monster.isDead()) {
-				matrix[y][x] = new EmptySquare(x, y);
+				matrix[y][x] = new EmptySquare(x, y, this);
 				monsters.remove(monster);
 			}
 			return true;

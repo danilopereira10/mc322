@@ -1,12 +1,10 @@
 package game_element;
 
-import map.Position;
+import map.Map;
 
-public class EmptySquare extends GameElement {
-	private Position position;
-	
-	public EmptySquare(int x, int y) {
-		super(x, y);
+public class EmptySquare extends GameElement {	
+	public EmptySquare(int x, int y, Map map) {
+		super(x, y, map);
 	}
 	
 	@Override

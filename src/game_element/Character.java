@@ -2,8 +2,8 @@ package game_element;
 
 import map.Map;
 
-public abstract class MovableGameElement extends GameElement {
-	public MovableGameElement(int x, int y, Map map) {
+public abstract class Character extends GameElement {
+	public Character(int x, int y, Map map) {
 		super(x, y, map);
 	}
 

@@ -6,12 +6,12 @@ import java.util.List;
 import equipment.Armor;
 import equipment.Weapon;
 import game_element.GameElement;
-import game_element.MovableGameElement;
+import game_element.Character;
 import map.ActionType;
 import map.Map;
 import spell.Spell;
 
-public abstract class Hero extends MovableGameElement {
+public abstract class Hero extends Character {
 	private String name;
 	private int attackDices;
 	private int defenseDices;
