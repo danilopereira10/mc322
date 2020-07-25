@@ -7,6 +7,7 @@ import java.util.Scanner;
 import hero.Hero;
 import monster.Monster;
 import printer.Printer;
+import scanner.KeyboardReader;
 
 public class Map {
 	private GameElement[][] matrix;
@@ -66,12 +67,11 @@ public class Map {
 	public void selectTarget(Hero attacker, Position initialPosition) {
 		Position actualPosition = initialPosition;
 		boolean attacked = false;
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = KeyboardReader.getScanner();
 		while (!attacked) {
 			printMapInSelectTargetMode(actualPosition);
 			attacked = choosePosition(actualPosition, scanner, attacker);
 		}
-		scanner.close();
 	}
 	
 	private void moveCursorUp(Position position) {
@@ -99,7 +99,7 @@ public class Map {
 	}
 	
 	private boolean choosePosition(Position actualPosition, Scanner scanner, Hero attacker) {
-		System.out.print("Enter the command : ");
+		Printer.getInstance().print("Enter the command : ");
 		String command = scanner.nextLine();
 		
 		if (command.compareTo("w") == 0) {
@@ -124,6 +124,35 @@ public class Map {
 			return true;
 		}
 		return false;
+	}
+	
+	public void choosePositionForTeleport(Position actualPosition) {
+		Printer.getInstance().print("Enter the command : ");
+		Scanner scanner = KeyboardReader.getScanner();
+		String command = scanner.nextLine().toLowerCase();
+		boolean choosingPosition = true;
+		
+		while (choosingPosition) {
+			if (command.compareTo("w") == 0) {
+				moveCursorUp(actualPosition);
+			} else if (command.compareTo("a") == 0) {
+				moveCursorLeft(actualPosition);
+			} else if (command.compareTo("s") == 0) {
+				moveCursorDown(actualPosition);
+			} else if (command.compareTo("d") == 0) {
+				moveCursorRight(actualPosition);
+			} else if (command.compareTo("t") == 0) {
+				int x = actualPosition.getX();
+				int y = actualPosition.getY();
+				if (matrix[y][x] instanceof EmptySquare) {
+					matrix[y][x] = matrix[x][y];
+					matrix[x][y] = new EmptySquare(x, y);
+					choosingPosition = false;
+				}
+			} else if (command.compareTo("c") == 0) {
+				choosingPosition = false;
+			}
+		}
 	}
 	
 	public boolean allMonstersDestroyed() {

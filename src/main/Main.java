@@ -15,13 +15,14 @@ import map.Map;
 import map.Position;
 import monster.Skeleton;
 import printer.Printer;
+import scanner.KeyboardReader;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Map map = new Map(new GameElement[10][10]);
 		map.printMap();
-		Scanner keyboard = new Scanner(System.in);
+		Scanner keyboard = KeyboardReader.getScanner();
 		Printer printer = Printer.getInstance();
 		
 		
