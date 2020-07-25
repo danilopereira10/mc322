@@ -120,10 +120,10 @@ public class Map {
 	}
 	
 	private boolean executeAction(ActionType actionType, Position actualPosition, Hero hero) {
+		int x = actualPosition.getX();
+		int y = actualPosition.getY();
 		switch (actionType) {
 		case ATTACK:
-			int x = actualPosition.getX();
-			int y = actualPosition.getY();
 			if (matrix[y][x] instanceof Monster) {
 				Monster monster = (Monster) matrix[y][x];
 				monster.reduceHp(hero.getAttackPoints());
@@ -134,7 +134,20 @@ public class Map {
 				return true;
 			}
 			return false;
-			
+		case TELEPORT:
+			if (matrix[y][x] instanceof EmptySquare) {
+				matrix[y][x] = matrix[x][y];
+				matrix[x][y] = new EmptySquare(x, y);
+				return true;
+			}
+			return false;
+		case SIMPLE_HEAL:
+			if (matrix[y][x] instanceof Hero) {
+				Hero heroToBeHealed = (Hero) matrix[y][x];
+				heroToBeHealed.heal();
+				return true;
+			}
+			return false;
 		default:
 			return false;
 		}
@@ -156,13 +169,7 @@ public class Map {
 			} else if (command.compareTo("d") == 0) {
 				moveCursorRight(actualPosition);
 			} else if (command.compareTo("f") == 0) {
-				int x = actualPosition.getX();
-				int y = actualPosition.getY();
-				if (matrix[y][x] instanceof EmptySquare) {
-					matrix[y][x] = matrix[x][y];
-					matrix[x][y] = new EmptySquare(x, y);
-					choosingPosition = false;
-				}
+				
 			} else if (command.compareTo("c") == 0) {
 				choosingPosition = false;
 			}
