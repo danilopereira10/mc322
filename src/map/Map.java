@@ -124,16 +124,7 @@ public class Map {
 		int y = actualPosition.getY();
 		switch (actionType) {
 		case NORMAL_ATTACK:
-			if (matrix[y][x] instanceof Monster) {
-				Monster monster = (Monster) matrix[y][x];
-				monster.reduceHp(hero.getAttackPoints());
-				if (monster.isDead()) {
-					matrix[y][x] = new EmptySquare(x, y);
-					monsters.remove(monster);
-				}
-				return true;
-			}
-			return false;
+			return attack(x, y, hero.getAttackPoints());
 		case TELEPORT:
 			if (matrix[y][x] instanceof EmptySquare) {
 				matrix[y][x] = matrix[x][y];
@@ -149,30 +140,24 @@ public class Map {
 			}
 			return false;
 		case MAGIC_MISSILE:
-			if (matrix[y][x] instanceof Monster) {
-				Monster monster = (Monster) matrix[y][x];
-				monster.reduceHp(6);
-				if (monster.isDead()) {
-					matrix[y][x] = new EmptySquare(x, y);
-					monsters.remove(monster);
-				}
-				return true;
-			}
-			return false;
-		case FIRE_BALL: 
-			if (matrix[y][x] instanceof Monster) {
-				Monster monster = (Monster) matrix[y][x];
-				monster.reduceHp(6);
-				if (monster.isDead()) {
-					matrix[y][x] = new EmptySquare(x, y);
-					monsters.remove(monster);
-				}
-				return true;
-			}
-			return false;
+		case FIRE_BALL:
+			return attack(x, y, 6);
 		default:
 			throw new IllegalArgumentException();
 		}
+	}
+	
+	private boolean attack(int x, int y, int damage) {
+		if (matrix[y][x] instanceof Monster) {
+			Monster monster = (Monster) matrix[y][x];
+			monster.reduceHp(damage);
+			if (monster.isDead()) {
+				matrix[y][x] = new EmptySquare(x, y);
+				monsters.remove(monster);
+			}
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean allMonstersDestroyed() {
