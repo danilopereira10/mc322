@@ -100,7 +100,7 @@ public class Map {
 	
 	private boolean choosePosition(Position actualPosition, Scanner scanner, Hero attacker) {
 		Printer.getInstance().print("Enter the command : ");
-		String command = scanner.nextLine();
+		String command = scanner.nextLine().toLowerCase();
 		
 		if (command.compareTo("w") == 0) {
 			moveCursorUp(actualPosition);

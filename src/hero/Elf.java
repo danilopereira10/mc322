@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import equipment.Weapon;
+import spell.Spell;
 
 public class Elf extends Hero {
 
@@ -19,6 +20,8 @@ public class Elf extends Hero {
 	public static Hero createElf() {
 		List<Weapon> weapons = new ArrayList<>();
 		weapons.add(Weapon.SHORT_SWORD);
+		List<Spell> spells = new ArrayList<>();
+		spells.add()
 		return new Elf("Danilo", 0, 0, weapons);
 	}
 }

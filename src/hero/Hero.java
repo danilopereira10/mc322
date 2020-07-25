@@ -8,6 +8,7 @@ import equipment.Weapon;
 import map.GameElement;
 import map.Map;
 import movable.Movable;
+import spell.Spell;
 
 public abstract class Hero extends GameElement implements Movable {
 	private String name;
@@ -19,9 +20,10 @@ public abstract class Hero extends GameElement implements Movable {
 	private Weapon weaponUsingForAttack;
 	private int usedHands;
 	private Armor armor;
+	private List<Spell> spells;
 	
 	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, int x, int y,
-			List<Weapon> beginningWeapons) {
+			List<Weapon> beginningWeapons, List<Spell> spells) {
 		super(x, y);
 		this.name = name;
 		this.attackDices = attackDices;
@@ -35,6 +37,7 @@ public abstract class Hero extends GameElement implements Movable {
 		}
 		weaponUsingForAttack = weapons.get(weapons.size() - 1);
 		armor = Armor.NO_ARMOR;
+		this.spells = spells;
 	}
 
 	@Override
