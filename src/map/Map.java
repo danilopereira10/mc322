@@ -123,7 +123,7 @@ public class Map {
 		int x = actualPosition.getX();
 		int y = actualPosition.getY();
 		switch (actionType) {
-		case ATTACK:
+		case NORMAL_ATTACK:
 			if (matrix[y][x] instanceof Monster) {
 				Monster monster = (Monster) matrix[y][x];
 				monster.reduceHp(hero.getAttackPoints());
@@ -145,6 +145,28 @@ public class Map {
 			if (matrix[y][x] instanceof Hero) {
 				Hero heroToBeHealed = (Hero) matrix[y][x];
 				heroToBeHealed.heal();
+				return true;
+			}
+			return false;
+		case MAGIC_MISSILE:
+			if (matrix[y][x] instanceof Monster) {
+				Monster monster = (Monster) matrix[y][x];
+				monster.reduceHp(6);
+				if (monster.isDead()) {
+					matrix[y][x] = new EmptySquare(x, y);
+					monsters.remove(monster);
+				}
+				return true;
+			}
+			return false;
+		case FIRE_BALL: 
+			if (matrix[y][x] instanceof Monster) {
+				Monster monster = (Monster) matrix[y][x];
+				monster.reduceHp(6);
+				if (monster.isDead()) {
+					matrix[y][x] = new EmptySquare(x, y);
+					monsters.remove(monster);
+				}
 				return true;
 			}
 			return false;

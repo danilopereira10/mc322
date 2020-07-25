@@ -86,7 +86,7 @@ public abstract class Hero extends GameElement implements Movable {
 	}
 	
 	public void attack(Map map) {
-		map.selectTarget(this, position, ActionType.ATTACK);
+		map.selectTarget(this, position, ActionType.NORMAL_ATTACK);
 	}
 	
 	public boolean died() {

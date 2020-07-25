@@ -16,15 +16,15 @@ public enum Spell {
 	FIRE_BALL {
 		@Override
 		public void doAction(Hero hero, Map map) {
-			// TODO Auto-generated method stub
-			
+			Position actualPosition = new Position(hero.getX(), hero.getY());
+			map.selectTarget(hero, actualPosition, ActionType.FIRE_BALL);
 		}
 	},
 	MAGIC_MISSILE {
 		@Override
 		public void doAction(Hero hero, Map map) {
-			// TODO Auto-generated method stub
-			
+			Position actualPosition = new Position(hero.getX(), hero.getY());
+			map.selectTarget(hero, actualPosition, ActionType.MAGIC_MISSILE);
 		}
 	},
 	SIMPLE_HEAL { 

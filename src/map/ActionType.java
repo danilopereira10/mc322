@@ -1,7 +1,7 @@
 package map;
 
 public enum ActionType {
-	ATTACK,
+	NORMAL_ATTACK,
 	TELEPORT,
 	SIMPLE_HEAL,
 	MAGIC_MISSILE,
