@@ -26,7 +26,7 @@ public class Main {
 		printer.printLine("Digite 2 para Anão");
 		printer.printLine("Digite 3 para Elfo");
 		printer.printLine("Digite 4 para Feiticeiro");
-		String choosenHero = KeyboardReader.readLineInLowerCase();
+		String choosenHero = KeyboardReader.getInstance().readLineInLowerCase();
 		Hero hero;
 		
 		switch (choosenHero) {

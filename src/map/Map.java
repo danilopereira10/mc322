@@ -63,7 +63,7 @@ public class Map {
 	}
 	
 	public void selectTarget(Hero hero, Position initialPosition, ActionType actionType) {
-		Position actualPosition = initialPosition;
+		Position actualPosition = new Position(initialPosition.getX(), initialPosition.getY());
 		boolean choosingPosition = true;
 		while (choosingPosition) {
 			printMapInSelectTargetMode(actualPosition);

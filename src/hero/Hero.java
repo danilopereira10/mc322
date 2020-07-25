@@ -71,7 +71,8 @@ public abstract class Hero extends Character {
 		Printer.getInstance().printLine("Choose spell: ");
 		int i = 0;
 		for (Spell spell : spells) {
-			Printer.getInstance().printLine("Type: " + i + "- for: " + spell.toString());
+			Printer.getInstance().printLine("Type: " + i + " - for: " + spell.toString());
+			i++;
 		}
 		String choosenSpell = KeyboardReader.getInstance().readLineInLowerCase();
 		Integer choosenSpellNumber;
