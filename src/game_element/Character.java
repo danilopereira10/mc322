@@ -2,7 +2,7 @@ package game_element;
 
 import map.Map;
 
-public abstract class Character extends GameElement {
+public abstract class Character extends MapElement {
 	public Character(int x, int y, Map map) {
 		super(x, y, map);
 	}

@@ -5,7 +5,7 @@ import java.util.List;
 
 import equipment.Armor;
 import equipment.Weapon;
-import game_element.GameElement;
+import game_element.MapElement;
 import game_element.Character;
 import map.ActionType;
 import map.Map;

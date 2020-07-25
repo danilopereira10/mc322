@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.Scanner;
 
 import game_element.EmptySquare;
-import game_element.GameElement;
+import game_element.MapElement;
 import hero.Hero;
 import monster.Monster;
 import printer.Printer;
 import scanner.KeyboardReader;
 
 public class Map {
-	private GameElement[][] matrix;
+	private MapElement[][] matrix;
 	List<Monster> monsters;
 	
-	public Map(GameElement[][] matrix) {
+	public Map(MapElement[][] matrix) {
 		this.matrix = matrix;
 		monsters = new ArrayList<>();
 		initializeMatrix();
@@ -29,35 +29,35 @@ public class Map {
 		}
 	}
 
-	public void put(GameElement gameElement, Position position) {
+	public void put(MapElement gameElement, Position position) {
 		matrix[position.getY()][position.getX()] = gameElement;
 		if (gameElement instanceof Monster) {
 			monsters.add((Monster) gameElement);
 		}
 	}
 	
-	public void moveUp(GameElement gameElement) {
+	public void moveUp(MapElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY() - 1][gameElement.getX()] = gameElement;
 		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
-	public void moveLeft(GameElement gameElement) {
+	public void moveLeft(MapElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY()][gameElement.getX() - 1] = gameElement;
 		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
-	public void moveRight(GameElement gameElement) {
+	public void moveRight(MapElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY()][gameElement.getX() + 1] = gameElement;
 		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
-	public void moveDown(GameElement gameElement) {
+	public void moveDown(MapElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY() + 1][gameElement.getX()] = gameElement;
@@ -178,8 +178,8 @@ public class Map {
 	}
 	
 	public void printMap() {
-		for (GameElement[] items : matrix) {
-			for (GameElement item : items) {
+		for (MapElement[] items : matrix) {
+			for (MapElement item : items) {
 				item.print();
 			}
 			Printer.getInstance().printLine();

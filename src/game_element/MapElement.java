@@ -5,11 +5,11 @@ import map.Position;
 import printer.Printable;
 import printer.Printer;
 
-public abstract class GameElement implements Printable {
+public abstract class MapElement implements Printable {
 	protected Position position;
 	protected Map map;
 	
-	public GameElement(int x, int y, Map map) {
+	public MapElement(int x, int y, Map map) {
 		this.position = new Position(x, y);
 		this.map = map;
 		map.put(this, position);

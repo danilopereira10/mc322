@@ -2,14 +2,13 @@ package main;
 
 import java.util.Scanner;
 
-import game_element.GameElement;
+import game_element.MapElement;
 import hero.Barbarian;
 import hero.Dwarf;
 import hero.Elf;
 import hero.Hero;
 import hero.Sorcerer;
 import map.Map;
-import map.Position;
 import monster.Skeleton;
 import printer.Printer;
 import scanner.KeyboardReader;
@@ -17,7 +16,7 @@ import scanner.KeyboardReader;
 public class Main {
 
 	public static void main(String[] args) {
-		Map map = new Map(new GameElement[10][10]);
+		Map map = new Map(new MapElement[10][10]);
 		map.printMap();
 		Scanner keyboard = KeyboardReader.getScanner();
 		Printer printer = Printer.getInstance();
@@ -30,7 +29,7 @@ public class Main {
 		printer.printLine("Digite 4 para Feiticeiro");
 		String choosenHero = keyboard.nextLine();
 		Hero hero;
-		Position initialPosition = new Position(0, 0);
+		
 		switch (choosenHero) {
 		case "1":
 			hero = Barbarian.createBarbarian(map);
@@ -56,7 +55,7 @@ public class Main {
 		boolean lost = false;
 		boolean running = true;
 		while (running) {
-			System.out.print("Enter the command : ");
+			Printer.getInstance().print("Enter the command : ");
 			String command = keyboard.nextLine();
 			
 			if (command.compareTo("w") == 0) {
