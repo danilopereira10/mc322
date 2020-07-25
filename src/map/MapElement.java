@@ -1,7 +1,5 @@
-package game_element;
+package map;
 
-import map.Map;
-import map.Position;
 import printer.Printable;
 import printer.Printer;
 

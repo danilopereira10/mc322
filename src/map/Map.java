@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import game_element.EmptySquare;
-import game_element.MapElement;
 import hero.Hero;
 import monster.Monster;
 import printer.Printer;

@@ -3,12 +3,12 @@ package hero;
 import java.util.ArrayList;
 import java.util.List;
 
+import character.Character;
 import equipment.Armor;
 import equipment.Weapon;
-import game_element.MapElement;
-import game_element.Character;
 import map.ActionType;
 import map.Map;
+import map.MapElement;
 import spell.Spell;
 
 public abstract class Hero extends Character {

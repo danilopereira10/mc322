@@ -1,6 +1,7 @@
-package game_element;
+package character;
 
 import map.Map;
+import map.MapElement;
 
 public abstract class Character extends MapElement {
 	public Character(int x, int y, Map map) {

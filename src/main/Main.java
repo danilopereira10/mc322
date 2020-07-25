@@ -2,13 +2,13 @@ package main;
 
 import java.util.Scanner;
 
-import game_element.MapElement;
 import hero.Barbarian;
 import hero.Dwarf;
 import hero.Elf;
 import hero.Hero;
 import hero.Sorcerer;
 import map.Map;
+import map.MapElement;
 import monster.Skeleton;
 import printer.Printer;
 import scanner.KeyboardReader;

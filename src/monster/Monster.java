@@ -1,7 +1,7 @@
 package monster;
 
-import game_element.MapElement;
 import map.Map;
+import map.MapElement;
 
 public abstract class Monster extends MapElement {
 	protected int hp;
