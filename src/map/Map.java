@@ -62,10 +62,10 @@ public class Map {
 		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
-	public boolean selectTarget(Hero hero, Position initialPosition, ActionType actionType) throws 
+	public void selectTarget(Hero hero, Position initialPosition, ActionType actionType) throws 
 	CommandCancelledException {
 		Position actualPosition = new Position(initialPosition.getX(), initialPosition.getY());
-		return executedAction(actualPosition, hero, actionType);
+		executeAction(actualPosition, hero, actionType);
 	}
 	
 	
@@ -93,7 +93,7 @@ public class Map {
 		}
 	}
 	
-	private boolean executedAction(Position actualPosition, Hero hero, ActionType actionType) throws 
+	private void executeAction(Position actualPosition, Hero hero, ActionType actionType) throws 
 	CommandCancelledException {
 		while (true) {
 			printMapInSelectTargetMode(actualPosition);
@@ -109,10 +109,7 @@ public class Map {
 			} else if (command.compareTo("d") == 0) {
 				moveCursorRight(actualPosition);
 			} else if (command.compareTo("f") == 0) {
-				boolean executed = executeAction(actionType, actualPosition, hero);
-				if (executed) {
-					return true;
-				}
+				executeAction(actionType, actualPosition, hero);
 			} else if (command.compareTo("c") == 0) {
 				throw new CommandCancelledException();
 			}
