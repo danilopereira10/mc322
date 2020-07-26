@@ -61,6 +61,12 @@ public class Main {
 		map.setAiHeros(aiHeros);
 		
 		Skeleton.createNewSkeleton(new Position(2, 2), map);
+		Skeleton.createNewSkeleton(new Position(3, 2), map);
+		Skeleton.createNewSkeleton(new Position(2, 4), map);
+		Skeleton.createNewSkeleton(new Position(4, 3), map);
+		Skeleton.createNewSkeleton(new Position(5, 5), map);
+		Skeleton.createNewSkeleton(new Position(6, 8), map);
+		Skeleton.createNewSkeleton(new Position(9, 7), map);
 
 		boolean won = false;
 		boolean lost = false;
