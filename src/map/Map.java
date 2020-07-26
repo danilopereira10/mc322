@@ -222,6 +222,7 @@ public class Map {
 	public void updateEnvironment() {
 		for (Hero hero : aiHeros) {
 			hero.moveRandomly();
+			hero.attackRandomly();
 		}
 		for (Monster monster : monsters) {
 			monster.moveRandomly();

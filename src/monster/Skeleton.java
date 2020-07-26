@@ -9,7 +9,7 @@ import map.Position;
 
 public class Skeleton extends Monster {	
 	public Skeleton(List<Weapon> beginningWeapons, Position position, Map map) {
-		super(10, 1, 1, 1, beginningWeapons, position, map);
+		super(1, 1, 1, 1, beginningWeapons, position, map);
 	}
 	
 	@Override
