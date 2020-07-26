@@ -88,6 +88,7 @@ public abstract class Hero extends Character {
 	}
 	
 	public void teleportTo(Position newPosition) {
+		map.clear(position.getX(), position.getY());
 		position.setX(newPosition.getX());
 		position.setY(newPosition.getY());
 	}

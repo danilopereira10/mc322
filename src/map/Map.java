@@ -124,9 +124,8 @@ public class Map {
 			return attack(x, y, hero.getAttackPoints());
 		case TELEPORT:
 			if (matrix[y][x] instanceof EmptySquare) {
-				matrix[y][x] = matrix[x][y];
-				matrix[x][y] = new EmptySquare(x, y, this);
 				hero.teleportTo(actualPosition);
+				matrix[y][x] = hero;
 				return true;
 			}
 			return false;
@@ -182,5 +181,9 @@ public class Map {
 			}
 			Printer.getInstance().printLine();
 		}
+	}
+	
+	public void clear(int x, int y) {
+		matrix[y][x] = new EmptySquare(x, y, this);
 	}
 }
