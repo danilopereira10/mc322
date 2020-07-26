@@ -1,5 +1,8 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import hero.Barbarian;
 import hero.Dwarf;
 import hero.Elf;
@@ -49,6 +52,14 @@ public class Main {
 			System.exit(1);
 		}
 		
+		List<Hero> aiHeros = new ArrayList<>();
+		aiHeros.add(barbarian);
+		aiHeros.add(dwarf);
+		aiHeros.add(elf);
+		aiHeros.add(sorcerer);
+		aiHeros.remove(hero);
+		map.setAiHeros(aiHeros);
+		
 		Skeleton.createNewSkeleton(new Position(2, 2), map);
 
 		boolean won = false;
@@ -72,6 +83,7 @@ public class Main {
 			} else if (command.compareTo("g") == 0) {
 				hero.useSpell();
 			}
+			map.updateEnvironment();
 			map.printMap();
 			won = map.allMonstersDestroyed();
 			lost = hero.died();

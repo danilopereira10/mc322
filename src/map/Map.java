@@ -15,6 +15,7 @@ import scanner.KeyboardReader;
 public class Map {
 	private MapElement[][] matrix;
 	List<Monster> monsters;
+	List<Hero> aiHeros;
 	
 	public Map(MapElement[][] matrix) {
 		this.matrix = matrix;
@@ -44,7 +45,7 @@ public class Map {
 			throw new InvalidMovementException();
 		}
 		this.matrix[y - 1][x] = gameElement;
-		matrix[y][x] = new EmptySquare(new Position(x, y), this);
+		clear(x, y);
 	}
 	
 	public void moveLeft(MapElement gameElement) throws InvalidMovementException {
@@ -54,7 +55,7 @@ public class Map {
 			throw new InvalidMovementException();
 		}
 		this.matrix[y][x - 1] = gameElement;
-		matrix[y][x] = new EmptySquare(new Position(x, y), this);
+		clear(x, y);
 	}
 	
 	public void moveRight(MapElement gameElement) throws InvalidMovementException {
@@ -64,7 +65,7 @@ public class Map {
 			throw new InvalidMovementException();
 		}
 		this.matrix[y][x + 1] = gameElement;
-		matrix[y][x] = new EmptySquare(new Position(x, y), this);
+		clear(x, y);
 	}
 	
 	public void moveDown(MapElement gameElement) throws InvalidMovementException {
@@ -74,7 +75,7 @@ public class Map {
 			throw new InvalidMovementException();
 		}
 		this.matrix[y + 1][x] = gameElement;
-		matrix[y][x] = new EmptySquare(new Position(x, y), this);
+		clear(x, y);
 	}
 	
 	public void selectTarget(Hero hero, Position initialPosition, ActionType actionType) throws 
@@ -211,5 +212,15 @@ public class Map {
 	
 	public void clear(int x, int y) {
 		matrix[y][x] = new EmptySquare(new Position(x, y), this);
+	}
+	
+	public void setAiHeros(List<Hero> aiHeros) {
+		this.aiHeros = aiHeros;
+	}
+	
+	public void updateEnvironment() {
+		for (Hero hero : aiHeros) {
+			hero.moveRandomly();
+		}
 	}
 }
