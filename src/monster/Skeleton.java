@@ -6,10 +6,11 @@ import java.util.List;
 import equipment.Weapon;
 import map.Map;
 import map.Position;
+import spell.Spell;
 
 public class Skeleton extends Monster {	
-	public Skeleton(List<Weapon> beginningWeapons, Position position, Map map) {
-		super(1, 1, 1, 1, beginningWeapons, position, map);
+	public Skeleton(List<Weapon> beginningWeapons, List<Spell> spells, Position position, Map map) {
+		super(1, 1, 1, 1, beginningWeapons, spells, position, map);
 	}
 	
 	@Override
@@ -19,6 +20,7 @@ public class Skeleton extends Monster {
 	
 	public static Skeleton createNewSkeleton(Position position, Map map) {
 		List<Weapon> weapons = new ArrayList<>();
-		return new Skeleton(weapons, position, map);
+		List<Spell> spells = new ArrayList<>();
+		return new Skeleton(weapons, spells, position, map);
 	}
 }

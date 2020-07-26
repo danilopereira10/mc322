@@ -9,6 +9,7 @@ import exception.InvalidTargetException;
 import map.Map;
 import map.MapElement;
 import map.Position;
+import spell.Spell;
 
 public abstract class MapCharacter extends MapElement {
 	private int attackDices;
@@ -18,9 +19,10 @@ public abstract class MapCharacter extends MapElement {
 	private List<Weapon> weapons;
 	private Weapon weaponUsingForAttack;
 	private int usedHands;
+	private List<Spell> spells;
 	
 	public MapCharacter(int attackDices, int defenseDices, int hp, int intelligencePoints,
-			List<Weapon> beginningWeapons, Position position, Map map) {
+			List<Weapon> beginningWeapons, List<Spell> spells, Position position, Map map) {
 		super(position, map);
 		this.attackDices = attackDices;
 		this.defenseDices = defenseDices;
@@ -32,6 +34,7 @@ public abstract class MapCharacter extends MapElement {
 			usedHands += weapon.getNeededHands();
 		}
 		chooseWeapon();
+		this.spells = spells;
 	}
 	
 	private void chooseWeapon() {

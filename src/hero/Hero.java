@@ -20,7 +20,7 @@ public abstract class Hero extends MapCharacter {
 	
 	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, Position position, 
 			Map map, List<Weapon> beginningWeapons, List<Spell> spells) {
-		super(attackDices, defenseDices, hp, intelligencePoints, beginningWeapons, position, map);
+		super(attackDices, defenseDices, hp, intelligencePoints, beginningWeapons, spells, position, map);
 		this.name = name;
 		armor = Armor.NO_ARMOR;
 		this.spells = spells;
