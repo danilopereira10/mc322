@@ -212,11 +212,6 @@ public class Map {
 	}
 	
 	public void clear(int x, int y) {
-		if (monsters.contains(matrix[y][x])) {
-			monsters.remove(matrix[y][x]);
-		} else if (aiHeros.contains(matrix[y][x])) {
-			aiHeros.remove(matrix[y][x]);
-		}
 		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 	
@@ -239,6 +234,11 @@ public class Map {
 			MapCharacter defender = (MapCharacter) matrix[y][x];
 			defender.reduceHp(attacker.getAttackPoints());
 			if (defender.died()) {
+				if (monsters.contains(matrix[y][x])) {
+					monsters.remove(matrix[y][x]);
+				} else if (aiHeros.contains(matrix[y][x])) {
+					aiHeros.remove(matrix[y][x]);
+				}
 				clear(x, y);
 			}
 		} else {
