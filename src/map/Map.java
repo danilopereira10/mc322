@@ -145,7 +145,12 @@ public class Map {
 			return false;
 		case MAGIC_MISSILE:
 		case FIRE_BALL:
-			return attack(x, y, 6);
+			try {
+				attack(x, y, 6);
+			} catch (InvalidAttackException e) {
+				return false;
+			}
+			return true;
 		default:
 			throw new IllegalArgumentException();
 		}
