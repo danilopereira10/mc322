@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.CommandCancelledException;
-import exception.InvalidAttackException;
+import exception.InvalidTargetException;
 import hero.Hero;
 import monster.Monster;
 import printer.Printer;
@@ -110,53 +110,51 @@ public class Map {
 			} else if (command.compareTo("d") == 0) {
 				moveCursorRight(actualPosition);
 			} else if (command.compareTo("f") == 0) {
-				executeAction(actionType, actualPosition, hero);
+				try {
+					executeAction(actionType, actualPosition, hero);
+				} catch (InvalidTargetException e) {
+					continue;
+				}
+				break;
 			} else if (command.compareTo("c") == 0) {
 				throw new CommandCancelledException();
 			}
 		}
 	}
 	
-	private boolean executeAction(ActionType actionType, Position actualPosition, Hero hero) {
+	private void executeAction(ActionType actionType, Position actualPosition, Hero hero) 
+			throws InvalidTargetException {
 		int x = actualPosition.getX();
 		int y = actualPosition.getY();
 		switch (actionType) {
 		case NORMAL_ATTACK:
-			try {
-				attack(x, y, hero.getAttackPoints());
-			} catch (InvalidAttackException e) {
-				return false;
-			}
+			attack(x, y, hero.getAttackPoints());
 			hero.updateWeapons();
-			return true;
+			break;
 		case TELEPORT:
 			if (matrix[y][x] instanceof EmptySquare) {
 				hero.teleportTo(actualPosition);
 				matrix[y][x] = hero;
-				return true;
+				return;
 			}
-			return false;
+			throw new InvalidTargetException();
 		case SIMPLE_HEAL:
 			if (matrix[y][x] instanceof Hero) {
 				Hero heroToBeHealed = (Hero) matrix[y][x];
 				heroToBeHealed.heal();
-				return true;
+				return;
 			}
-			return false;
+			throw new InvalidTargetException();
 		case MAGIC_MISSILE:
 		case FIRE_BALL:
-			try {
-				attack(x, y, 6);
-			} catch (InvalidAttackException e) {
-				return false;
-			}
-			return true;
+			attack(x, y, 6);
+			break;
 		default:
 			throw new IllegalArgumentException();
 		}
 	}
 	
-	private void attack(int x, int y, int damage) throws InvalidAttackException {
+	private void attack(int x, int y, int damage) throws InvalidTargetException {
 		if (matrix[y][x] instanceof Monster) {
 			Monster monster = (Monster) matrix[y][x];
 			monster.reduceHp(damage);
@@ -165,7 +163,7 @@ public class Map {
 				monsters.remove(monster);
 			}
 		}
-		throw new InvalidAttackException();
+		throw new InvalidTargetException();
 	}
 	
 	public boolean allMonstersDestroyed() {

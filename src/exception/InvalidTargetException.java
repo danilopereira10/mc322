@@ -1,6 +1,6 @@
 package exception;
 
-public class InvalidAttackException extends Exception {
+public class InvalidTargetException extends Exception {
 
 	/**
 	 * 
