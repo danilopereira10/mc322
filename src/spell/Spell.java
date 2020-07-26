@@ -1,8 +1,8 @@
 package spell;
 
+import action.ActionType;
 import exception.CommandCancelledException;
 import hero.Hero;
-import map.ActionType;
 import map.Map;
 import map.Position;
 

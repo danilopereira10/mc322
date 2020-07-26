@@ -2,11 +2,11 @@ package hero;
 
 import java.util.List;
 
+import action.ActionType;
 import character.MapCharacter;
 import equipment.Armor;
 import equipment.Weapon;
 import exception.CommandCancelledException;
-import map.ActionType;
 import map.Map;
 import map.Position;
 import printer.Printer;

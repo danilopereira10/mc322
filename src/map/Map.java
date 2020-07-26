@@ -3,6 +3,7 @@ package map;
 import java.util.ArrayList;
 import java.util.List;
 
+import action.ActionType;
 import exception.CommandCancelledException;
 import exception.InvalidMovementException;
 import exception.InvalidTargetException;

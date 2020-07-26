@@ -1,4 +1,4 @@
-package map;
+package action;
 
 public enum ActionType {
 	NORMAL_ATTACK,
