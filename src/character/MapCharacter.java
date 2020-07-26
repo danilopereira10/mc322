@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import equipment.Weapon;
+import exception.InvalidMovementException;
 import map.Map;
 import map.MapElement;
 import map.Position;
@@ -58,7 +59,7 @@ public abstract class MapCharacter extends MapElement {
 	public void moveUp() {
 		try {
 			map.moveUp(this);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (ArrayIndexOutOfBoundsException | InvalidMovementException e) {
 			return;
 		}
 		position.setY(position.getY() - 1);
@@ -67,7 +68,7 @@ public abstract class MapCharacter extends MapElement {
 	public void moveLeft() {
 		try {
 			map.moveLeft(this);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (ArrayIndexOutOfBoundsException | InvalidMovementException e) {
 			return;
 		}
 		position.setX(position.getX() - 1);
@@ -76,7 +77,7 @@ public abstract class MapCharacter extends MapElement {
 	public void moveRight() {
 		try {
 			map.moveRight(this);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (ArrayIndexOutOfBoundsException | InvalidMovementException e) {
 			return;
 		}
 		position.setX(position.getX() + 1);
@@ -85,7 +86,7 @@ public abstract class MapCharacter extends MapElement {
 	public void moveDown() {
 		try {
 			map.moveDown(this);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (ArrayIndexOutOfBoundsException | InvalidMovementException e) {
 			return;
 		}
 		position.setY(position.getY() + 1);

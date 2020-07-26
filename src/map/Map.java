@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.CommandCancelledException;
+import exception.InvalidMovementException;
 import exception.InvalidTargetException;
 import hero.Hero;
 import monster.Monster;
@@ -35,30 +36,42 @@ public class Map {
 		}
 	}
 	
-	public void moveUp(MapElement gameElement) {
+	public void moveUp(MapElement gameElement) throws InvalidMovementException {
 		int x = gameElement.getX();
 		int y = gameElement.getY();
+		if (!(matrix[y - 1][x] instanceof EmptySquare)) {
+			throw new InvalidMovementException();
+		}
 		this.matrix[y - 1][x] = gameElement;
 		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 	
-	public void moveLeft(MapElement gameElement) {
+	public void moveLeft(MapElement gameElement) throws InvalidMovementException {
 		int x = gameElement.getX();
 		int y = gameElement.getY();
+		if(!(matrix[y][x - 1] instanceof EmptySquare)) {
+			throw new InvalidMovementException();
+		}
 		this.matrix[y][x - 1] = gameElement;
 		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 	
-	public void moveRight(MapElement gameElement) {
+	public void moveRight(MapElement gameElement) throws InvalidMovementException {
 		int x = gameElement.getX();
 		int y = gameElement.getY();
+		if(!(matrix[y][x + 1] instanceof EmptySquare)) {
+			throw new InvalidMovementException();
+		}
 		this.matrix[y][x + 1] = gameElement;
 		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 	
-	public void moveDown(MapElement gameElement) {
+	public void moveDown(MapElement gameElement) throws InvalidMovementException {
 		int x = gameElement.getX();
 		int y = gameElement.getY();
+		if(!(matrix[y + 1][x] instanceof EmptySquare)) {
+			throw new InvalidMovementException();
+		}
 		this.matrix[y + 1][x] = gameElement;
 		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
