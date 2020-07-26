@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.CommandCancelledException;
+import exception.InvalidAttackException;
 import hero.Hero;
 import monster.Monster;
 import printer.Printer;
@@ -121,11 +122,13 @@ public class Map {
 		int y = actualPosition.getY();
 		switch (actionType) {
 		case NORMAL_ATTACK:
-			boolean attacked = attack(x, y, hero.getAttackPoints());
-			if (attacked) {
-				hero.updateWeapons();
+			try {
+				attack(x, y, hero.getAttackPoints());
+			} catch (InvalidAttackException e) {
+				return false;
 			}
-			return attacked;
+			hero.updateWeapons();
+			return true;
 		case TELEPORT:
 			if (matrix[y][x] instanceof EmptySquare) {
 				hero.teleportTo(actualPosition);
@@ -148,7 +151,7 @@ public class Map {
 		}
 	}
 	
-	private boolean attack(int x, int y, int damage) {
+	private void attack(int x, int y, int damage) throws InvalidAttackException {
 		if (matrix[y][x] instanceof Monster) {
 			Monster monster = (Monster) matrix[y][x];
 			monster.reduceHp(damage);
@@ -156,9 +159,8 @@ public class Map {
 				matrix[y][x] = new EmptySquare(new Position(x, y), this);
 				monsters.remove(monster);
 			}
-			return true;
 		}
-		return false;
+		throw new InvalidAttackException();
 	}
 	
 	public boolean allMonstersDestroyed() {
