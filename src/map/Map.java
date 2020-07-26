@@ -222,5 +222,8 @@ public class Map {
 		for (Hero hero : aiHeros) {
 			hero.moveRandomly();
 		}
+		for (Monster monster : monsters) {
+			monster.moveRandomly();
+		}
 	}
 }

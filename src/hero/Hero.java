@@ -76,17 +76,4 @@ public abstract class Hero extends MapCharacter {
 		position.setX(newPosition.getX());
 		position.setY(newPosition.getY());
 	}
-	
-	public void moveRandomly() {
-		double movement = Math.floor(Math.random() * 4);
-		if (movement == 0) {
-			moveUp();
-		} else if (movement == 1) {
-			moveLeft();
-		} else if (movement == 2) {
-			moveRight();
-		} else {
-			moveDown();
-		}
-	}
 }

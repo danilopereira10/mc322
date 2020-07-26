@@ -91,4 +91,17 @@ public abstract class MapCharacter extends MapElement {
 		}
 		position.setY(position.getY() + 1);
 	}
+	
+	public void moveRandomly() {
+		double movement = Math.floor(Math.random() * 4);
+		if (movement == 0) {
+			moveUp();
+		} else if (movement == 1) {
+			moveLeft();
+		} else if (movement == 2) {
+			moveRight();
+		} else {
+			moveDown();
+		}
+	}
 }
