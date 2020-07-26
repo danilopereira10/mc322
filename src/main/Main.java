@@ -47,6 +47,12 @@ public class Main {
 		}
 		
 		new Skeleton(new Position(2, 2), map);
+		new Skeleton(new Position(3, 2), map);
+		new Skeleton(new Position(2, 4), map);
+		new Skeleton(new Position(4, 3), map);
+		new Skeleton(new Position(5, 5), map);
+		new Skeleton(new Position(6, 8), map);
+		new Skeleton(new Position(9, 7), map);
 
 		boolean won = false;
 		boolean lost = false;
