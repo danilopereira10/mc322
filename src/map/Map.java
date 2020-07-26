@@ -36,31 +36,31 @@ public class Map {
 	}
 	
 	public void moveUp(MapElement gameElement) {
-		int originalX = gameElement.getX();
-		int originalY = gameElement.getY();
-		this.matrix[gameElement.getY() - 1][gameElement.getX()] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY), this);
+		int x = gameElement.getX();
+		int y = gameElement.getY();
+		this.matrix[y - 1][x] = gameElement;
+		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 	
 	public void moveLeft(MapElement gameElement) {
-		int originalX = gameElement.getX();
-		int originalY = gameElement.getY();
-		this.matrix[gameElement.getY()][gameElement.getX() - 1] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY), this);
+		int x = gameElement.getX();
+		int y = gameElement.getY();
+		this.matrix[y][x - 1] = gameElement;
+		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 	
 	public void moveRight(MapElement gameElement) {
-		int originalX = gameElement.getX();
-		int originalY = gameElement.getY();
-		this.matrix[gameElement.getY()][gameElement.getX() + 1] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY), this);
+		int x = gameElement.getX();
+		int y = gameElement.getY();
+		this.matrix[y][x + 1] = gameElement;
+		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 	
 	public void moveDown(MapElement gameElement) {
-		int originalX = gameElement.getX();
-		int originalY = gameElement.getY();
-		this.matrix[gameElement.getY() + 1][gameElement.getX()] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY), this);
+		int x = gameElement.getX();
+		int y = gameElement.getY();
+		this.matrix[y + 1][x] = gameElement;
+		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 	
 	public void selectTarget(Hero hero, Position initialPosition, ActionType actionType) throws 
