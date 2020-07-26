@@ -3,7 +3,7 @@ package hero;
 import java.util.ArrayList;
 import java.util.List;
 
-import character.Character;
+import character.MapCharacter;
 import equipment.Armor;
 import equipment.Weapon;
 import exception.CommandCancelledException;
@@ -14,7 +14,7 @@ import printer.Printer;
 import scanner.KeyboardReader;
 import spell.Spell;
 
-public abstract class Hero extends Character {
+public abstract class Hero extends MapCharacter {
 	private String name;
 	private int attackDices;
 	private int defenseDices;

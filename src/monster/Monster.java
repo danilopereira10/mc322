@@ -1,10 +1,10 @@
 package monster;
 
+import character.MapCharacter;
 import map.Map;
-import map.MapElement;
 import map.Position;
 
-public abstract class Monster extends MapElement {
+public abstract class Monster extends MapCharacter {
 	protected int hp;
 	
 	public Monster(Position position, Map map) {

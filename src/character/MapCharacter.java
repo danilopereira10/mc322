@@ -4,8 +4,8 @@ import map.Map;
 import map.MapElement;
 import map.Position;
 
-public abstract class Character extends MapElement {
-	public Character(Position position, Map map) {
+public abstract class MapCharacter extends MapElement {
+	public MapCharacter(Position position, Map map) {
 		super(position, map);
 	}
 
