@@ -2,11 +2,11 @@ package hero;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import character.Character;
 import equipment.Armor;
 import equipment.Weapon;
+import exception.CommandCancelledException;
 import map.ActionType;
 import map.Map;
 import map.Position;
@@ -57,10 +57,12 @@ public abstract class Hero extends Character {
 	}
 	
 	public void attack() {
-		boolean attacked = map.selectTarget(this, position, ActionType.NORMAL_ATTACK);
-		if (attacked) {
-			updateWeapons();
+		try {
+			map.selectTarget(this, position, ActionType.NORMAL_ATTACK);
+		} catch (CommandCancelledException e) {
+			return;
 		}
+		updateWeapons();
 	}
 	
 	public void updateWeapons() {
@@ -102,10 +104,12 @@ public abstract class Hero extends Character {
 			return;
 		}
 		Spell spell = spells.get(choosenSpellNumber);
-		boolean usedSpell = spell.doAction(this, map);
-		if (usedSpell) {
-			spells.remove(spell);
+		try {
+			spell.doAction(this, map);
+		} catch (CommandCancelledException e) {
+			return;
 		}
+		spells.remove(spell);
 	}
 	
 	public void teleportTo(Position newPosition) {

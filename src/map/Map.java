@@ -2,8 +2,8 @@ package map;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+import exception.CommandCancelledException;
 import hero.Hero;
 import monster.Monster;
 import printer.Printer;
@@ -62,7 +62,8 @@ public class Map {
 		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
-	public boolean selectTarget(Hero hero, Position initialPosition, ActionType actionType) {
+	public boolean selectTarget(Hero hero, Position initialPosition, ActionType actionType) throws 
+	CommandCancelledException {
 		Position actualPosition = new Position(initialPosition.getX(), initialPosition.getY());
 		return executedAction(actualPosition, hero, actionType);
 	}
@@ -92,7 +93,8 @@ public class Map {
 		}
 	}
 	
-	private boolean executedAction(Position actualPosition, Hero hero, ActionType actionType) {
+	private boolean executedAction(Position actualPosition, Hero hero, ActionType actionType) throws 
+	CommandCancelledException {
 		while (true) {
 			printMapInSelectTargetMode(actualPosition);
 			Printer.getInstance().print("Enter the command : ");
@@ -112,7 +114,7 @@ public class Map {
 					return true;
 				}
 			} else if (command.compareTo("c") == 0) {
-				return false;
+				throw new CommandCancelledException();
 			}
 		}
 	}
