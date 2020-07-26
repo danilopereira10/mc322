@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import action.ActionType;
+import character.MapCharacter;
 import exception.CommandCancelledException;
 import exception.InvalidMovementException;
 import exception.InvalidTargetException;
@@ -211,6 +212,11 @@ public class Map {
 	}
 	
 	public void clear(int x, int y) {
+		if (monsters.contains(matrix[y][x])) {
+			monsters.remove(matrix[y][x]);
+		} else if (aiHeros.contains(matrix[y][x])) {
+			aiHeros.remove(matrix[y][x]);
+		}
 		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 	
@@ -224,6 +230,24 @@ public class Map {
 		}
 		for (Monster monster : monsters) {
 			monster.moveRandomly();
+			monster.attackRandomly();
 		}
+	}
+	
+	public void reportDamage(int x, int y, MapCharacter attacker) throws InvalidTargetException {
+		if (isValidAttack(attacker, matrix[y][x])) {
+			MapCharacter defender = (MapCharacter) matrix[y][x];
+			defender.reduceHp(attacker.getAttackPoints());
+			if (defender.died()) {
+				clear(x, y);
+			}
+		} else {
+			throw new InvalidTargetException();
+		}
+	}
+	
+	public boolean isValidAttack(MapElement attacker, MapElement defender) {
+		return attacker instanceof Hero && monsters.contains(defender)
+				|| monsters.contains(attacker) && defender instanceof Hero;
 	}
 }

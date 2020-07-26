@@ -5,6 +5,7 @@ import java.util.List;
 
 import equipment.Weapon;
 import exception.InvalidMovementException;
+import exception.InvalidTargetException;
 import map.Map;
 import map.MapElement;
 import map.Position;
@@ -103,5 +104,27 @@ public abstract class MapCharacter extends MapElement {
 		} else {
 			moveDown();
 		}
+	}
+	
+	public void attackRandomly() {
+		boolean attacked = false;
+		for (int i = position.getX() - 1; i <= position.getX() + 1; i++) {
+			for (int j = position.getY() - 1; j <= position.getY() + 1; j++) {
+				try {
+					map.reportDamage(i, j, this);
+					attacked = true;
+					break;
+				} catch (ArrayIndexOutOfBoundsException | InvalidTargetException e) {
+					//keeping "for" block running
+				}
+			}
+			if (attacked) {
+				break;
+			}
+		}
+	}
+
+	public void reduceHp(int attackPoints) {
+		hp -= attackPoints;
 	}
 }

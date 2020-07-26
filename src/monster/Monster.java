@@ -13,8 +13,4 @@ public abstract class Monster extends MapCharacter {
 			List<Weapon> beginningWeapons, Position position, Map map) {
 		super(attackDices, defenseDices, hp, intelligencePoints, beginningWeapons, position, map);
 	}
-	
-	public void reduceHp(int attackPoints) {
-		hp -= attackPoints;
-	}
 }
