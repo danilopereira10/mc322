@@ -135,16 +135,18 @@ public class Map {
 			if (matrix[y][x] instanceof EmptySquare) {
 				hero.teleportTo(actualPosition);
 				matrix[y][x] = hero;
-				return;
+			} else {
+				throw new InvalidTargetException();
 			}
-			throw new InvalidTargetException();
+			break;
 		case SIMPLE_HEAL:
 			if (matrix[y][x] instanceof Hero) {
 				Hero heroToBeHealed = (Hero) matrix[y][x];
 				heroToBeHealed.heal();
-				return;
+			} else {
+				throw new InvalidTargetException();
 			}
-			throw new InvalidTargetException();
+			break;
 		case MAGIC_MISSILE:
 		case FIRE_BALL:
 			attack(x, y, 6);
@@ -162,8 +164,9 @@ public class Map {
 				matrix[y][x] = new EmptySquare(new Position(x, y), this);
 				monsters.remove(monster);
 			}
+		} else {
+			throw new InvalidTargetException();
 		}
-		throw new InvalidTargetException();
 	}
 	
 	public boolean allMonstersDestroyed() {
