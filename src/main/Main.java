@@ -26,19 +26,22 @@ public class Main {
 		printer.printLine("Digite 4 para Feiticeiro");
 		String choosenHero = KeyboardReader.getInstance().readLineInLowerCase();
 		Hero hero;
-		
+		Hero barbarian = Barbarian.createBarbarian(map);
+		Hero dwarf = Dwarf.createDwarf(map);
+		Hero elf = Elf.createElf(map);
+		Hero sorcerer = Sorcerer.createSorcerer(map);
 		switch (choosenHero) {
 		case "1":
-			hero = Barbarian.createBarbarian(map);
+			hero = barbarian;
 			break;
 		case "2":
-			hero = Dwarf.createDwarf(map);
+			hero = dwarf;
 			break;
 		case "3":
-			hero = Elf.createElf(map);
+			hero = elf;
 			break;
 		case "4":
-			hero = Sorcerer.createSorcerer(map);
+			hero = sorcerer;
 			break;
 		default:
 			hero = null;

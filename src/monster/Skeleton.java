@@ -10,7 +10,6 @@ import map.Position;
 public class Skeleton extends Monster {	
 	public Skeleton(List<Weapon> beginningWeapons, Position position, Map map) {
 		super(1, 1, 1, 1, beginningWeapons, position, map);
-		hp = 10;
 	}
 	
 	@Override
