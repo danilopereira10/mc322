@@ -39,9 +39,17 @@ public abstract class Hero extends Character {
 			weapons.add(weapon);
 			usedHands += weapon.getNeededHands();
 		}
-		weaponUsingForAttack = weapons.get(weapons.size() - 1);
+		chooseWeapon();
 		armor = Armor.NO_ARMOR;
 		this.spells = spells;
+	}
+
+	private void chooseWeapon() {
+		if (!weapons.isEmpty()) {
+			weaponUsingForAttack = weapons.get(weapons.size() - 1);
+		} else {
+			weaponUsingForAttack = Weapon.NO_WEAPON;
+		}
 	}
 	
 	public int getAttackPoints() {
@@ -49,7 +57,17 @@ public abstract class Hero extends Character {
 	}
 	
 	public void attack() {
-		map.selectTarget(this, position, ActionType.NORMAL_ATTACK);
+		boolean attacked = map.selectTarget(this, position, ActionType.NORMAL_ATTACK);
+		if (attacked) {
+			updateWeapons();
+		}
+	}
+	
+	public void updateWeapons() {
+		if (!weaponUsingForAttack.isReusable()) {
+			weapons.remove(weaponUsingForAttack);
+			chooseWeapon();
+		}
 	}
 	
 	public boolean died() {
@@ -84,7 +102,10 @@ public abstract class Hero extends Character {
 			return;
 		}
 		Spell spell = spells.get(choosenSpellNumber);
-		spell.doAction(this, map);
+		boolean usedSpell = spell.doAction(this, map);
+		if (usedSpell) {
+			spells.remove(spell);
+		}
 	}
 	
 	public void teleportTo(Position newPosition) {

@@ -62,14 +62,11 @@ public class Map {
 		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
 	}
 	
-	public void selectTarget(Hero hero, Position initialPosition, ActionType actionType) {
+	public boolean selectTarget(Hero hero, Position initialPosition, ActionType actionType) {
 		Position actualPosition = new Position(initialPosition.getX(), initialPosition.getY());
-		boolean choosingPosition = true;
-		while (choosingPosition) {
-			printMapInSelectTargetMode(actualPosition);
-			choosingPosition = stillChoosingPosition(actualPosition, hero, actionType);
-		}
+		return executedAction(actualPosition, hero, actionType);
 	}
+	
 	
 	private void moveCursorUp(Position position) {
 		if (position.getY() > 0) {
@@ -95,25 +92,29 @@ public class Map {
 		}
 	}
 	
-	private boolean stillChoosingPosition(Position actualPosition, Hero hero, ActionType actionType) {
-		Printer.getInstance().print("Enter the command : ");
-		String command = KeyboardReader.getInstance().readLineInLowerCase();
-		
-		if (command.compareTo("w") == 0) {
-			moveCursorUp(actualPosition);
-		} else if (command.compareTo("a") == 0) {
-			moveCursorLeft(actualPosition);
-		} else if (command.compareTo("s") == 0) {
-			moveCursorDown(actualPosition);
-		} else if (command.compareTo("d") == 0) {
-			moveCursorRight(actualPosition);
-		} else if (command.compareTo("f") == 0) {
-			boolean executed = executeAction(actionType, actualPosition, hero);
-			return !executed;
-		} else if (command.compareTo("c") == 0) {
-			return false;
+	private boolean executedAction(Position actualPosition, Hero hero, ActionType actionType) {
+		while (true) {
+			printMapInSelectTargetMode(actualPosition);
+			Printer.getInstance().print("Enter the command : ");
+			String command = KeyboardReader.getInstance().readLineInLowerCase();
+			
+			if (command.compareTo("w") == 0) {
+				moveCursorUp(actualPosition);
+			} else if (command.compareTo("a") == 0) {
+				moveCursorLeft(actualPosition);
+			} else if (command.compareTo("s") == 0) {
+				moveCursorDown(actualPosition);
+			} else if (command.compareTo("d") == 0) {
+				moveCursorRight(actualPosition);
+			} else if (command.compareTo("f") == 0) {
+				boolean executed = executeAction(actionType, actualPosition, hero);
+				if (executed) {
+					return true;
+				}
+			} else if (command.compareTo("c") == 0) {
+				return false;
+			}
 		}
-		return true;
 	}
 	
 	private boolean executeAction(ActionType actionType, Position actualPosition, Hero hero) {
@@ -121,7 +122,11 @@ public class Map {
 		int y = actualPosition.getY();
 		switch (actionType) {
 		case NORMAL_ATTACK:
-			return attack(x, y, hero.getAttackPoints());
+			boolean attacked = attack(x, y, hero.getAttackPoints());
+			if (attacked) {
+				hero.updateWeapons();
+			}
+			return attacked;
 		case TELEPORT:
 			if (matrix[y][x] instanceof EmptySquare) {
 				hero.teleportTo(actualPosition);

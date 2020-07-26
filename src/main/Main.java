@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Scanner;
-
 import hero.Barbarian;
 import hero.Dwarf;
 import hero.Elf;
@@ -17,7 +15,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		Map map = new Map(new MapElement[10][10]);
-		map.printMap();
 		Printer printer = Printer.getInstance();
 		
 		
@@ -53,6 +50,7 @@ public class Main {
 		boolean won = false;
 		boolean lost = false;
 		boolean running = true;
+		map.printMap();
 		while (running) {
 			Printer.getInstance().print("Enter the command : ");
 			String command = KeyboardReader.getInstance().readLineInLowerCase();
