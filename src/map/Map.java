@@ -173,7 +173,7 @@ public class Map {
 	}
 	
 	private void attack(int x, int y, int damage) throws InvalidTargetException {
-		if (matrix[y][x] instanceof Monster) {
+		if (monsters.contains(matrix[y][x])) {
 			Monster monster = (Monster) matrix[y][x];
 			monster.reduceHp(damage);
 			if (monster.died()) {
