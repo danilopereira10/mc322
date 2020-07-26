@@ -2,10 +2,11 @@ package character;
 
 import map.Map;
 import map.MapElement;
+import map.Position;
 
 public abstract class Character extends MapElement {
-	public Character(int x, int y, Map map) {
-		super(x, y, map);
+	public Character(Position position, Map map) {
+		super(position, map);
 	}
 
 	public void moveUp() {

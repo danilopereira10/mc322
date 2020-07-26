@@ -22,7 +22,7 @@ public class Map {
 	private void initializeMatrix() {
 		for (int y = 0; y < matrix.length; y++) {
 			for (int x = 0; x < matrix[y].length; x++) {
-				matrix[y][x] = new EmptySquare(x, y, this);
+				matrix[y][x] = new EmptySquare(new Position(x, y), this);
 			}
 		}
 	}
@@ -38,28 +38,28 @@ public class Map {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY() - 1][gameElement.getX()] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
+		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY), this);
 	}
 	
 	public void moveLeft(MapElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY()][gameElement.getX() - 1] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
+		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY), this);
 	}
 	
 	public void moveRight(MapElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY()][gameElement.getX() + 1] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
+		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY), this);
 	}
 	
 	public void moveDown(MapElement gameElement) {
 		int originalX = gameElement.getX();
 		int originalY = gameElement.getY();
 		this.matrix[gameElement.getY() + 1][gameElement.getX()] = gameElement;
-		matrix[originalY][originalX] = new EmptySquare(originalX, originalY, this);
+		matrix[originalY][originalX] = new EmptySquare(new Position(originalX, originalY), this);
 	}
 	
 	public void selectTarget(Hero hero, Position initialPosition, ActionType actionType) throws 
@@ -153,7 +153,7 @@ public class Map {
 			Monster monster = (Monster) matrix[y][x];
 			monster.reduceHp(damage);
 			if (monster.isDead()) {
-				matrix[y][x] = new EmptySquare(x, y, this);
+				matrix[y][x] = new EmptySquare(new Position(x, y), this);
 				monsters.remove(monster);
 			}
 			return true;
@@ -188,6 +188,6 @@ public class Map {
 	}
 	
 	public void clear(int x, int y) {
-		matrix[y][x] = new EmptySquare(x, y, this);
+		matrix[y][x] = new EmptySquare(new Position(x, y), this);
 	}
 }

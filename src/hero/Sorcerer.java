@@ -5,12 +5,13 @@ import java.util.List;
 
 import equipment.Weapon;
 import map.Map;
+import map.Position;
 import spell.Spell;
 
 public class Sorcerer extends Hero {
 
-	public Sorcerer(String name, int x, int y, Map map, List<Weapon> weapons, List<Spell> spells) {
-		super(name, 1, 2, 4, 6, x, y, map, weapons, spells);
+	public Sorcerer(String name, Position position, Map map, List<Weapon> weapons, List<Spell> spells) {
+		super(name, 1, 2, 4, 6, position, map, weapons, spells);
 	}
 
 	@Override
@@ -29,6 +30,6 @@ public class Sorcerer extends Hero {
 		spells.add(Spell.MAGIC_MISSILE);
 		spells.add(Spell.FIRE_BALL);
 		spells.add(Spell.TELEPORT);
-		return new Sorcerer("Danilo", 0, 0, map, weapons, spells);
+		return new Sorcerer("Danilo", new Position(9, 9), map, weapons, spells);
 	}
 }

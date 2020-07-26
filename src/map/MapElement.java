@@ -7,8 +7,8 @@ public abstract class MapElement implements Printable {
 	protected Position position;
 	protected Map map;
 	
-	public MapElement(int x, int y, Map map) {
-		this.position = new Position(x, y);
+	public MapElement(Position position, Map map) {
+		this.position = position;
 		this.map = map;
 		map.put(this, position);
 	}

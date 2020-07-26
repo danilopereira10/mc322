@@ -26,9 +26,9 @@ public abstract class Hero extends Character {
 	private Armor armor;
 	private List<Spell> spells;
 	
-	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, int x, int y, Map map,
-			List<Weapon> beginningWeapons, List<Spell> spells) {
-		super(x, y, map);
+	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, Position position, 
+			Map map, List<Weapon> beginningWeapons, List<Spell> spells) {
+		super(position, map);
 		this.name = name;
 		this.attackDices = attackDices;
 		this.defenseDices = defenseDices;

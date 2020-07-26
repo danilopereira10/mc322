@@ -6,7 +6,7 @@ public class KeyboardReader {
 	private static KeyboardReader instance;
 	private static Scanner scanner;
 	
-	private void KeyboardReader() {
+	private KeyboardReader() {
 		//hiding constructor
 	}
 	

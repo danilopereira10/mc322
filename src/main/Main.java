@@ -7,6 +7,7 @@ import hero.Hero;
 import hero.Sorcerer;
 import map.Map;
 import map.MapElement;
+import map.Position;
 import monster.Skeleton;
 import printer.Printer;
 import scanner.KeyboardReader;
@@ -45,7 +46,7 @@ public class Main {
 			System.exit(1);
 		}
 		
-		new Skeleton(2, 2, map);
+		new Skeleton(new Position(2, 2), map);
 
 		boolean won = false;
 		boolean lost = false;

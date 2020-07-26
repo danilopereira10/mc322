@@ -1,8 +1,8 @@
 package map;
 
 public class EmptySquare extends MapElement {	
-	public EmptySquare(int x, int y, Map map) {
-		super(x, y, map);
+	public EmptySquare(Position position, Map map) {
+		super(position, map);
 	}
 	
 	@Override
