@@ -9,6 +9,7 @@ import equipment.Armor;
 import equipment.Weapon;
 import map.ActionType;
 import map.Map;
+import map.Position;
 import printer.Printer;
 import scanner.KeyboardReader;
 import spell.Spell;
@@ -84,5 +85,10 @@ public abstract class Hero extends Character {
 		}
 		Spell spell = spells.get(choosenSpellNumber);
 		spell.doAction(this, map);
+	}
+	
+	public void teleportTo(Position newPosition) {
+		position.setX(newPosition.getX());
+		position.setY(newPosition.getY());
 	}
 }

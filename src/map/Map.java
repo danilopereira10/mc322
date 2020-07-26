@@ -126,6 +126,7 @@ public class Map {
 			if (matrix[y][x] instanceof EmptySquare) {
 				matrix[y][x] = matrix[x][y];
 				matrix[x][y] = new EmptySquare(x, y, this);
+				hero.teleportTo(actualPosition);
 				return true;
 			}
 			return false;
