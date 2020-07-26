@@ -1,6 +1,5 @@
 package hero;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import character.MapCharacter;
@@ -16,46 +15,17 @@ import spell.Spell;
 
 public abstract class Hero extends MapCharacter {
 	private String name;
-	private int attackDices;
-	private int defenseDices;
-	private int hp;
-	private int intelligencePoints;
-	private List<Weapon> weapons;
-	private Weapon weaponUsingForAttack;
-	private int usedHands;
 	private Armor armor;
 	private List<Spell> spells;
 	
 	public Hero (String name, int attackDices, int defenseDices, int hp, int intelligencePoints, Position position, 
 			Map map, List<Weapon> beginningWeapons, List<Spell> spells) {
-		super(position, map);
+		super(attackDices, defenseDices, hp, intelligencePoints, beginningWeapons, position, map);
 		this.name = name;
-		this.attackDices = attackDices;
-		this.defenseDices = defenseDices;
-		this.hp = hp;
-		this.intelligencePoints = intelligencePoints;
-		this.weapons = new ArrayList<>();
-		for (Weapon weapon : beginningWeapons) {
-			weapons.add(weapon);
-			usedHands += weapon.getNeededHands();
-		}
-		chooseWeapon();
 		armor = Armor.NO_ARMOR;
 		this.spells = spells;
 	}
 
-	private void chooseWeapon() {
-		if (!weapons.isEmpty()) {
-			weaponUsingForAttack = weapons.get(weapons.size() - 1);
-		} else {
-			weaponUsingForAttack = Weapon.NO_WEAPON;
-		}
-	}
-	
-	public int getAttackPoints() {
-		return attackDices + weaponUsingForAttack.getAttackDices();
-	}
-	
 	public void attack() {
 		try {
 			map.selectTarget(this, position, ActionType.NORMAL_ATTACK);
@@ -63,17 +33,6 @@ public abstract class Hero extends MapCharacter {
 			return;
 		}
 		updateWeapons();
-	}
-	
-	public void updateWeapons() {
-		if (!weaponUsingForAttack.isReusable()) {
-			weapons.remove(weaponUsingForAttack);
-			chooseWeapon();
-		}
-	}
-	
-	public boolean died() {
-		return hp <= 0;
 	}
 	
 	public void heal() {

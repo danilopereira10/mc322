@@ -1,21 +1,20 @@
 package monster;
 
+import java.util.List;
+
 import character.MapCharacter;
+import equipment.Weapon;
 import map.Map;
 import map.Position;
 
 public abstract class Monster extends MapCharacter {
-	protected int hp;
 	
-	public Monster(Position position, Map map) {
-		super(position, map);
+	public Monster(int attackDices, int defenseDices, int hp, int intelligencePoints,
+			List<Weapon> beginningWeapons, Position position, Map map) {
+		super(attackDices, defenseDices, hp, intelligencePoints, beginningWeapons, position, map);
 	}
 	
 	public void reduceHp(int attackPoints) {
 		hp -= attackPoints;
-	}
-	
-	public boolean isDead() {
-		return hp <= 0;
 	}
 }

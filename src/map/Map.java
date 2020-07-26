@@ -160,7 +160,7 @@ public class Map {
 		if (matrix[y][x] instanceof Monster) {
 			Monster monster = (Monster) matrix[y][x];
 			monster.reduceHp(damage);
-			if (monster.isDead()) {
+			if (monster.died()) {
 				matrix[y][x] = new EmptySquare(new Position(x, y), this);
 				monsters.remove(monster);
 			}

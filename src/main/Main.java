@@ -46,7 +46,7 @@ public class Main {
 			System.exit(1);
 		}
 		
-		new Skeleton(new Position(2, 2), map);
+		Skeleton.createNewSkeleton(new Position(2, 2), map);
 
 		boolean won = false;
 		boolean lost = false;
